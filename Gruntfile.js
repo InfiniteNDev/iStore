@@ -14,14 +14,14 @@ module.exports = function(grunt) {
           './bower_components/jquery/dist/jquery.js',
           './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
           './bower_components/modernizr/modernizr.js',
-          './app/assets/javascripts/frontend.js'
+          './resources/assets/javascripts/frontend.js'
           ],
           dest: './public/assets/javascripts/frontend.js',
         },
         js_backend: {
           src: [
           './bower_components/angular/angular.js',
-          './app/assets/javascript/backend.js'
+          './resources/assets/javascript/backend.js'
           ],
           dest: './public/assets/javascripts/backend.js',
         },
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       sass: {
         dist: {
           files: [{
-            "./public/assets/stylesheets/style.css": "./app/assets/stylesheets/style.scss"
+            "./public/assets/stylesheets/style.css": "./resources/assets/stylesheets/style.scss"
           }]
         }
       },
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         js_frontend: {
           files: [
             //watched files
-            './app/assets/javascripts/frontend.js'
+            './resources/assets/javascripts/frontend.js'
             ],   
           tasks: ['concat:js_frontend','uglify:frontend'],     //tasks to run
           options: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
         js_backend: {
           files: [
             //watched files
-            './app/assets/javascripts/backend.js'
+            './resources/assets/javascripts/backend.js'
           ],   
           tasks: ['concat:js_backend','uglify:backend'],     //tasks to run
           options: {
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         },
         sass: {
           files: [
-            './app/assets/stylesheets/*.scss',
+            './resources/assets/stylesheets/*.scss',
             './bower_components/boostrap-sass/assets/stylesheets/*.scss',
             './bower_components/boostrap-sass/assets/stylesheets/bootstrap/*.scss'
           ],  //watched files

@@ -14,7 +14,12 @@
 // frontend
 // frontend's homepage
 Route::get('/', function () {
-  return view('index');
+  return view('homepage/index');
+});
+
+// about page
+Route::get('/about', function () {
+  return view('about/about');
 });
 
 // products page: show all products

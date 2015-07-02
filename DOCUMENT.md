@@ -22,6 +22,11 @@ Author: InfiniteN [Email](mailto:liubingyao@gmail.com)
 # Trello
 [Trello](https://trello.com/b/hiE0qQkV)
 
+# Reference
+* [Shoptracker](https://www.behance.net/gallery/23060231/Shoptracker)
+* [Lunaretta](https://www.behance.net/gallery/26898629/Lunaretta)
+* [eCommerce Theme](https://www.behance.net/gallery/27032437/eCommerce-Theme)
+
 # Page
 * Frontend
   * homepage
