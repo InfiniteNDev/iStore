@@ -23,6 +23,7 @@ Author: InfiniteN [Email](mailto:liubingyao@gmail.com)
 [Trello](https://trello.com/b/hiE0qQkV)
 
 # Reference
+* [Bazienwp](http://bazienwp.themes4.net/)
 * [Shoptracker](https://www.behance.net/gallery/23060231/Shoptracker)
 * [Lunaretta](https://www.behance.net/gallery/26898629/Lunaretta)
 * [eCommerce Theme](https://www.behance.net/gallery/27032437/eCommerce-Theme)

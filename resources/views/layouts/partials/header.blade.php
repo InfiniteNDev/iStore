@@ -16,18 +16,23 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+          <li><a href="/products">Shop</a></li>
+          <li><a href="/articles">Blog</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/products">Product</a></li>
-          <li><a href="/articles">Blogs</a></li>
-          <li><a href="/cart">Cart</a></li>
-          <li><a href="/account">My Account</a></li>
         </ul>
-        <form class="navbar-form navbar-right" role="search">
+
+        <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/cart">Cart</a></li>
+          <li><a href="/account">My Account</a></li>
+        </ul>
+
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

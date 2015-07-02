@@ -65,12 +65,12 @@ Route::get('/checkout', function () {
 });
 
 // backend
+// admin login
+Route::get('/admin', function () {
+  return view('admin/login');
+});
 // fix: only admin user could enter
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
-  // admin login
-  Route::get('/', function () {
-    return view('admin/login');
-  });
 
   // admin homepage
   Route::get('/', function () {
