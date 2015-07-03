@@ -21,6 +21,6 @@
   {{-- end footer --}}
 
 
-  <script type="text/javascript" href="{{ asset('assets/javascripts/backend.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/javascripts/backend.js') }}"></script>
 </body>
 </html>

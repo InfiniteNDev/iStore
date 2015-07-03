@@ -33,9 +33,23 @@
           <li class='{{ Request::is('cart') ? 'active' : '' }}'>
             <a href="{{ URL::to('cart') }}">Cart</a>
           </li>
-          <li class='{{ Request::is('account') ? 'active' : '' }}'>
-            <a href="{{ URL::to('account') }}">My Account</a>
-          </li>
+          @if (Auth::check())
+            <li class='dropdown {{ Request::is('account')|Request::is('logout') ? 'active' : '' }}'>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class='{{ Request::is('account') ? 'active' : '' }}'>
+                  <a href="{{ URL::to('account') }}">My Account</a>
+                </li>
+                <li class='{{ Request::is('logout') ? 'active' : '' }}'>
+                  <a href="{{ URL::to('logout') }}">Log out</a>
+                </li>
+              </ul>
+            </li>
+          @else
+          <li class='{{ Request::is('login') ? 'active' : '' }}'>
+              <a href="{{ URL::to('login') }}">Login</a>
+            </li>    
+          @endif
         </ul>
 
         <form class="navbar-form navbar-right" role="search">
