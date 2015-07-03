@@ -9,22 +9,33 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">@yield('title')</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">iStore</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-          <li><a href="/products">Shop</a></li>
-          <li><a href="/articles">Blog</a></li>
-          <li><a href="/about">About</a></li>
+          <li class='{{ Request::is('/') ? 'active' : '' }}'>
+            <a href="/">Home</a>
+          </li>
+          <li class='{{ Request::is('products') ? 'active' : '' }}'>
+            <a href="{{ URL::to('products') }}">Shop</a>
+          </li>
+          <li class='{{ Request::is('articles') ? 'active' : '' }}'>
+            <a href="{{ URL::to('articles') }}">Blog</a>
+          </li>
+          <li class='{{ Request::is('about') ? 'active' : '' }}'>
+            <a href="{{ URL::to('about') }}">About</a>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/cart">Cart</a></li>
-          <li><a href="/account">My Account</a></li>
-          <li><a href="{{ URL::to('/admin') }}">To BackEnd</a></li>
+          <li class='{{ Request::is('cart') ? 'active' : '' }}'>
+            <a href="{{ URL::to('cart') }}">Cart</a>
+          </li>
+          <li class='{{ Request::is('account') ? 'active' : '' }}'>
+            <a href="{{ URL::to('account') }}">My Account</a>
+          </li>
         </ul>
 
         <form class="navbar-form navbar-right" role="search">
