@@ -40,14 +40,7 @@
       </div>
 
       {{-- submit button --}}
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-          {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 text-right">
-          <a href="{{ URL::to('/') }}" class="btn btn-primary">Back to FrontEnd</a>
-        </div>
-      </div>
+      {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
 
     </div>
   </div>

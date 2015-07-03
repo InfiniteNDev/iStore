@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('name', 320);
             $table->string('email', 32);
             // type: admin or user
-            // admin: 1
-            // user: 0
+            // admin: admin
+            // user: user
             $table->string('type', 32);
             $table->string('remember_token', 100) -> nullable();
             $table->timestamps();;

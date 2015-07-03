@@ -123,9 +123,11 @@ class adminLoginController extends Controller
       ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
     } else {
       // create our user data for the authentication
+      // only admin type could login
       $userdata = array(
         'username'     => Input::get('username'),
-        'password'     => Input::get('password')
+        'password'     => Input::get('password'),
+        'type'         => 'admin'
       );
 
       // attempt to do the login
