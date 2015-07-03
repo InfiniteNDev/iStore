@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>iStore</title>
+  <title>iStore - BackEnd</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/style.css') }}">
 </head>
 <body>
