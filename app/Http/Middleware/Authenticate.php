@@ -39,15 +39,6 @@ class Authenticate
     if ($this->auth->guest()) {
       if ($request->ajax()) {
         return response('Unauthorized.', 401);
-      } else {
-        if ($request->is('admin*'))
-        {
-          // if at frontend, redirect to login
-          return redirect()->guest('admin/login');
-        } else {
-          // if at backend, redirect to admin/login
-          return redirect()->guest('login');
-        }
       }
     }
 

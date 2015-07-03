@@ -9,7 +9,7 @@
   
   
   {{-- header --}}
-  @include('layouts.frontPartials.header')
+  @include('Layouts.frontPartials.header')
   {{-- end header --}}
 
   {{-- content --}}
@@ -17,7 +17,7 @@
   {{-- end content --}}
 
   {{-- footer --}}
-  @include('layouts.frontPartials.footer')
+  @include('Layouts.frontPartials.footer')
   {{-- end footer --}}
 
 

@@ -21,6 +21,9 @@
           <li class='{{ Request::is( 'admin/products') ? 'active' : '' }}'>
             <a href="{{ URL::to('admin/products') }}">Products</a>
             </li>
+          <li class='{{ Request::is( 'admin/orders') ? 'active' : '' }}'>
+            <a href="{{ URL::to('admin/orders') }}">Orders</a>
+          </li>
           <li class='{{ Request::is( 'admin/articles') ? 'active' : '' }}'>
             <a href="{{ URL::to('admin/articles') }}">Articles</a>
           </li>
@@ -31,8 +34,8 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{{ URL::to('/') }}">Back to FrontEnd</a></li>
-          @if (Auth::check())
-          <li><a href="{{ URL::to('admin/logout') }}">Logout</a></li>
+          @if (Auth::check() && Auth::user()->type=='admin')
+          <li><a href="{{ URL::to('admin/logout') }}">{{ Auth::user()->username }}, Logout</a></li>
           @endif
         </ul>
 

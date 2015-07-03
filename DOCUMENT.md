@@ -65,3 +65,22 @@ Author: InfiniteN [Email](mailto:liubingyao@gmail.com)
     * show single order, CRUD
   * users
     * show all users, CRUD
+
+# Structure - MVC
+* Model
+  * dir: app\Http\Models
+  * FrontEnd: Front
+  * BackEnd: Admin
+  * Basic: root
+* View
+  * dir: resources\views
+  * FrontEnd: Front
+  * BackEnd: Admin
+  * Layouts: Layouts
+  * Errors: Errors
+  * ***assets: resources\assets***
+* Controller
+  * dir: app\Http\Controllers
+  * FrontEnd: Front
+  * BackEnd: Admin
+  * Basic: Api

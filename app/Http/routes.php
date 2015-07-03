@@ -16,68 +16,68 @@
  *      FRONTEND      *
  *                    *
  *--------------------*/
-/*--------------------*   
- *        login       *
- *--------------------*/
 Route::group(
-  [], function () {
+  [
+  'namespace' => 'Front'
+  ], function () {
+    /*--------------------*   
+     *        login       *
+     *--------------------*/
     // show admin login form
-    Route::get('login', array('uses' => 'loginController@showLogin'));
+    Route::get('login', array('middleware' => 'notLogin', 'uses' => 'loginController@showLogin'));
     // admin login action
-    Route::post('login', array('uses' => 'loginController@doLogin'));
+    Route::post('login', array('middleware' => 'notLogin', 'uses' => 'loginController@doLogin'));
     // admin logout action
     Route::get('logout', array('uses' => 'loginController@doLogout'));
-  }
-);
-// frontend's homepage
-Route::get('/', function () {
-  return view('homepage/index');
-});
 
-// about page
-Route::get('/about', function () {
-  return view('about/about');
-});
+    // frontend's homepage
+    Route::get('/', function () {
+      return view('Front/Index/index');
+    });
 
-// products page: show all products
-Route::get('/products', function () {
-  return view('products');
-});
+    // about page
+    Route::get('/about', function () {
+      return view('Front/About/about');
+    });
 
-// product's detail page: show single product
-// fix: enter with id
-Route::get('/product', function () {
-  return view('product');
-});
+    // products page: show all products
+    Route::get('/products', function () {
+      return view('Front/products');
+    });
 
-// articles page: show all articles
-Route::get('/articles', function () {
-  return view('articles');
-});
+    // product's detail page: show single product
+    // fix: enter with id
+    Route::get('/product', function () {
+      return view('Front/product');
+    });
 
-// article's detial page: show single article
-// fix: enter with id
-Route::get('/article', function () {
-  return view('article');
-});
+    // articles page: show all articles
+    Route::get('/articles', function () {
+      return view('Front/articles');
+    });
 
-// cart page: show cart
-Route::get('/cart', function () {
-  return view('cart');
-});
+    // article's detial page: show single article
+    // fix: enter with id
+    Route::get('/article', function () {
+      return view('article');
+    });
 
-// checkout page: show checkout
-Route::get('/checkout', function () {
-  return view('checkout');
-});
+    // cart page: show cart
+    Route::get('/cart', function () {
+      return view('Front/cart');
+    });
 
-Route::group(['middleware' => 'auth'], function(){
-  // account page: show user's information
-  Route::get('/account', function () {
-    return view('account');
+    // checkout page: show checkout
+    Route::get('/checkout', function () {
+      return view('Front/checkout');
+    });
+
+    // my account page
+    Route::get('/account', function () {
+        return view('Front/account');
+    });
+
   });
-});
-
 
 
 /*-------------------*   
@@ -90,61 +90,59 @@ Route::group(['middleware' => 'auth'], function(){
  *-------------------*/
 Route::group(
   [
-    'namespace' => 'Admin',
-    'prefix' => 'admin'
+  'namespace' => 'Admin',
+  'prefix' => 'admin'
   ], function () {
     // show admin login form
-    Route::get('login', array('uses' => 'adminLoginController@showLogin'));
+    Route::get('login', array('middleware' => 'notLogin', 'uses' => 'adminLoginController@showLogin'));
     // admin login action
-    Route::post('login', array('uses' => 'adminLoginController@doLogin'));
+    Route::post('login', array('middleware' => 'notLogin', 'uses' => 'adminLoginController@doLogin'));
     // admin logout action
     Route::get('logout', array('uses' => 'adminLoginController@doLogout'));
   }
 );
 
-// fix: only admin user could enter
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
-
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
   // admin homepage
   Route::get('/', function () {
-    return view('admin/admin');
+    return view('Admin/index');
   });
 
   // admin products page: show all products, CRUD
   Route::get('/products', function () {
-    return view('admin/products');
+    return view('Admin/products');
   });
 
   // admin single product page: show single product, CRUD
   // fix: with id
   Route::get('/product', function () {
-    return view('admin/product');
+    return view('Admin/product');
   });
 
   // admin articles page: show all articles, CRUD
   Route::get('/articles', function () {
-    return view('admin/articles');
+    return view('Admin/articles');
   });
 
   // admin single article page: show single article, CRUD
   // fix: with id
   Route::get('/article', function () {
-    return view('admin/article');
+    return view('Admin/article');
   });
 
   // admin orders page: show all orders
   Route::get('/orders', function () {
-    return view('admin/orders');
+    return view('Admin/orders');
   });
 
   // admin single order page: show single order
   // fix: with id
   Route::get('/order', function () {
-    return view('admin/order');
+    return view('Admin/order');
   });
 
   // admin users page: show all users
   Route::get('/users', function () {
-    return view('admin/users');
+    return view('Admin/users');
   });
 });

@@ -1,28 +1,28 @@
-@extends('layouts.frontend')
+@extends('Layouts.frontend')
 
 @section('content')
   {{-- carousel --}}
-  @include('homepage.partials.carousel')
+  @include('Front.Index.Partials.carousel')
   {{-- end carousel --}}
 
   {{-- about --}}
-  @include('homepage.partials.about')
+  @include('Front.Index.Partials.about')
   {{-- end about --}}
 
   {{-- products --}}
-  @include('homepage.partials.products')
+  @include('Front.Index.Partials.products')
   {{-- end products --}}
 
   {{-- articles --}}
-  @include('homepage.partials.articles')
+  @include('Front.Index.Partials.articles')
   {{-- end articles --}}
 
   {{-- feedback --}}
-  @include('homepage.partials.feedback')
+  @include('Front.Index.Partials.feedback')
   {{-- end feedback --}}
 
   {{-- contact --}}
-  @include('homepage.partials.contact')
+  @include('Front.Index.Partials.contact')
   {{-- end contact --}}
 
 @endsection

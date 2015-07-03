@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 
 use Auth;
 use Illuminate\Support\Facades\Validator;
@@ -97,7 +97,7 @@ class loginController extends Controller
   public function showLogin()
   {
       // show admin login form
-    return view('login');
+    return view('Front/login');
   }
 
   /**

@@ -35,7 +35,10 @@
           </li>
           @if (Auth::check())
             <li class='dropdown {{ Request::is('account')|Request::is('logout') ? 'active' : '' }}'>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->username }}'s setting
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu">
                 <li class='{{ Request::is('account') ? 'active' : '' }}'>
                   <a href="{{ URL::to('account') }}">My Account</a>
