@@ -154,7 +154,7 @@ class adminLoginController extends Controller
     // log the user out of our app
     Auth::logout();
     // redirect the user to the login screen
-    return Redirect::to('/');
+    return Redirect::to('/admin/login');
   }
 
 }
