@@ -11,7 +11,24 @@
 |
 */
 
-// frontend
+/*--------------------*   
+ *                    *
+ *      FRONTEND      *
+ *                    *
+ *--------------------*/
+/*--------------------*   
+ *        login       *
+ *--------------------*/
+Route::group(
+  [], function () {
+    // show admin login form
+    Route::get('login', array('uses' => 'loginController@showLogin'));
+    // admin login action
+    Route::post('login', array('uses' => 'loginController@doLogin'));
+    // admin logout action
+    Route::get('logout', array('uses' => 'loginController@doLogout'));
+  }
+);
 // frontend's homepage
 Route::get('/', function () {
   return view('homepage/index');
@@ -61,12 +78,16 @@ Route::group(['middleware' => 'auth'], function(){
   });
 });
 
-// sign page: sign up or log in
-Route::get('/login', function () {
-  return view('login');
-});
 
-// backend
+
+/*-------------------*   
+ *                   *
+ *      BACKEND      *
+ *                   *
+ *-------------------*/
+/*-------------------*   
+ *       login       *
+ *-------------------*/
 Route::group(
   [
     'namespace' => 'Admin',
