@@ -21,18 +21,18 @@
           <li><a href="/about">About</a></li>
         </ul>
 
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/cart">Cart</a></li>
           <li><a href="/account">My Account</a></li>
           <li><a href="{{ URL::to('/admin') }}">To BackEnd</a></li>
         </ul>
+
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
