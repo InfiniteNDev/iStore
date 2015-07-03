@@ -1,4 +1,4 @@
-@extends('layouts.single')
+@extends('layouts.frontend')
 
 @section('content')
   {{-- carousel --}}

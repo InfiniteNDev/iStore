@@ -3454,7 +3454,8 @@ tbody.collapse.in {
 .input-group {
   position: relative;
   display: table;
-  border-collapse: separate; }
+  border-collapse: separate;
+  margin: 15px 0; }
   .input-group[class*="col-"] {
     float: none;
     padding-left: 0;
@@ -5795,5 +5796,8 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+.form-group label {
+  line-height: 34px;
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=style.css.map */

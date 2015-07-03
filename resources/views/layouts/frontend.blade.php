@@ -9,7 +9,7 @@
   
   
   {{-- header --}}
-  @include('layouts.partials.header')
+  @include('layouts.frontPartials.header')
   {{-- end header --}}
 
   {{-- content --}}
@@ -17,11 +17,10 @@
   {{-- end content --}}
 
   {{-- footer --}}
-  @include('layouts.partials.footer')
+  @include('layouts.frontPartials.footer')
   {{-- end footer --}}
 
 
   <script type="text/javascript" href="{{ asset('assets/javascripts/frontend.js') }}"></script>
-  <script type="text/javascript" href="{{ asset('assets/javascripts/backend.js') }}"></script>
 </body>
 </html>

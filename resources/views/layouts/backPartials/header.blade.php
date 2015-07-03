@@ -15,22 +15,15 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-          <li><a href="/products">Shop</a></li>
-          <li><a href="/articles">Blog</a></li>
-          <li><a href="/about">About</a></li>
+          <li class="active"><a href="{{ URL::to('admin') }}">Home <span class="sr-only">(current)</span></a></li>
+          <li><a href="{{ URL::to('admin/products') }}">Products</a></li>
+          <li><a href="{{ URL::to('admin/articles') }}">Articles</a></li>
+          <li><a href="{{ URL::to('admin/users') }}">Users</a></li>
         </ul>
 
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/cart">Cart</a></li>
-          <li><a href="/account">My Account</a></li>
+          <li><a href="{{ URL::to('/') }}">Back to FrontEnd</a></li>
+          <li><a href="{{ URL::to('admin/logout') }}">Logout</a></li>
         </ul>
 
       </div><!-- /.navbar-collapse -->

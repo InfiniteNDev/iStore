@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+use database\seeds\UserTableSeeder;
+use database\seeds\AdminTableSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        $this->call('UserTableSeeder');
 
         Model::reguard();
     }

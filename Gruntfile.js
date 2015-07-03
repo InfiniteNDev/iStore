@@ -11,17 +11,21 @@ module.exports = function(grunt) {
         },
         js_frontend: {
           src: [
-          './bower_components/jquery/dist/jquery.js',
-          './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-          './bower_components/modernizr/modernizr.js',
-          './resources/assets/javascripts/frontend.js'
+            './bower_components/jquery/dist/jquery.js',
+            './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+            './bower_components/modernizr/modernizr.js',
+            './bower_components/angular/angular.js',
+            './resources/assets/javascripts/frontend.js'
           ],
           dest: './public/assets/javascripts/frontend.js',
         },
         js_backend: {
           src: [
-          './bower_components/angular/angular.js',
-          './resources/assets/javascript/backend.js'
+            './bower_components/jquery/dist/jquery.js',
+            './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+            './bower_components/modernizr/modernizr.js',
+            './bower_components/angular/angular.js',
+            './resources/assets/javascript/backend.js'
           ],
           dest: './public/assets/javascripts/backend.js',
         },

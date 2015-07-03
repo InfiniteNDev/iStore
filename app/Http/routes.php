@@ -44,16 +44,6 @@ Route::get('/article', function () {
   return view('article');
 });
 
-// sign page: sign up or log in
-Route::get('/account', function () {
-  return view('account');
-});
-
-// account page: show user's information
-Route::get('/account', function () {
-  return view('account');
-});
-
 // cart page: show cart
 Route::get('/cart', function () {
   return view('cart');
@@ -64,11 +54,33 @@ Route::get('/checkout', function () {
   return view('checkout');
 });
 
-// backend
-// admin login
-Route::get('/admin', function () {
-  return view('admin/login');
+Route::group(['middleware' => 'auth'], function(){
+  // account page: show user's information
+  Route::get('/account', function () {
+    return view('account');
+  });
 });
+
+// sign page: sign up or log in
+Route::get('/login', function () {
+  return view('login');
+});
+
+// backend
+Route::group(
+  [
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
+  ], function () {
+    // show admin login form
+    Route::get('login', array('uses' => 'adminLoginController@showLogin'));
+    // admin login action
+    Route::post('login', array('uses' => 'adminLoginController@doLogin'));
+    // admin logout action
+    Route::get('logout', array('uses' => 'adminLoginController@doLogout'));
+  }
+);
+
 // fix: only admin user could enter
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
