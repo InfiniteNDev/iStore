@@ -18,17 +18,37 @@
  *--------------------*/
 Route::group(
   [
-  'namespace' => 'Front'
+    'namespace' => 'Front'
   ], function () {
     /*--------------------*   
      *        login       *
      *--------------------*/
+    
     // show admin login form
-    Route::get('login', array('middleware' => 'notLogin', 'uses' => 'FrontLoginController@showLogin'));
+    Route::get(
+      'login',
+      array(
+        'middleware' => 'notLogin',
+        'uses' => 'FrontLoginController@showLogin'
+      )
+    );
+    
     // admin login action
-    Route::post('login', array('middleware' => 'notLogin', 'uses' => 'FrontLoginController@doLogin'));
+    Route::post(
+      'login',
+      array(
+        'middleware' => 'notLogin',
+        'uses' => 'FrontLoginController@doLogin'
+      )
+    );
+    
     // admin logout action
-    Route::get('logout', array('uses' => 'FrontLoginController@doLogout'));
+    Route::get(
+      'logout',
+      array(
+        'uses' => 'FrontLoginController@doLogout'
+      )
+    );
 
     // frontend's homepage
     Route::get('/', function () {
@@ -90,133 +110,172 @@ Route::group(
  *-------------------*/
 Route::group(
   [
-  'namespace' => 'Admin',
-  'prefix' => 'admin'
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
   ], function () {
+    
     // show admin login form
-    Route::get('login', array('middleware' => 'notLogin', 'uses' => 'AdminLoginController@showLogin'));
+    Route::get(
+      'login',
+      array(
+        'middleware' => 'notLogin',
+        'uses' => 'AdminLoginController@showLogin'
+      )
+    );
+    
     // admin login action
-    Route::post('login', array('middleware' => 'notLogin', 'uses' => 'AdminLoginController@doLogin'));
+    Route::post(
+      'login',
+      array(
+        'middleware' => 'notLogin',
+        'uses' => 'AdminLoginController@doLogin'
+      )
+    );
+    
     // admin logout action
-    Route::get('logout', array('uses' => 'AdminLoginController@doLogout'));
+    Route::get(
+      'logout',
+      array(
+        'uses' => 'AdminLoginController@doLogout'
+      )
+    );
+
   }
 );
 
-Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
-  // admin homepage
-  Route::get('/', function () {
-    return view('Admin/index');
-  });
+Route::group(
+  [
+    'middleware' => 'admin',
+    'prefix' => 'admin'
+  ], function () {
+    // admin homepage
+    Route::get('/', function () {
+      return view('Admin/index');
+    });
 
-  /*---------------------*   
-   *       product       *
-   *---------------------*/
-  // C
-  // add product page
-  Route::get(
-    'product/new',
-    array('uses' => 'Api\ProductController@showNew')
-  );
-  // create product action
-  Route::post(
-    'product/create',
-    array('uses' => 'Api\ProductController@create')
-  );
+    /*---------------------*   
+     *       product       *
+     *---------------------*/
+    // C
+    // add product page
+    Route::get(
+      'product/new',
+      array(
+        'uses' => 'Api\ProductController@showNew'
+      )
+    );
+    // create product action
+    Route::post(
+      'product/create',
+      array(
+        'uses' => 'Api\ProductController@create'
+      )
+    );
 
-  // R
-  // admin products page: show all products
-  Route::get(
-    'product/products',
-    array('uses' => 'Api\ProductController@index')
-  );
-  // admin single product page: show single product, CRUD
-  // fix: with id
-  Route::get('product/product', function () {
-    return view('Admin/product');
-  });
+    // R
+    // admin products page: show all products
+    Route::get(
+      'product/products',
+      array(
+        'uses' => 'Api\ProductController@index'
+      )
+    );
+    // edit specific product
+    Route::get(
+      'product/edit',
+      array(
+        'uses' => 'Api\ProductController@edit'
+      )
+    );
 
-  // U
-  // edit specific product
-  Route::get(
-    'product/edit',
-    array('uses' => 'Api\ProductController@edit')
-  );
-  // toggle availability
-  Route::post(
-    'product/toggleAvailability',
-    array('uses' => 'Api\ProductController@toggleAvailability')
-  );
-  // update product
-  Route::post(
-    'product/update',
-    array('uses' => 'Api\ProductController@update')
-  );
+    // U
+    // toggle availability
+    Route::post(
+      'product/toggleAvailability',
+      array(
+        'uses' => 'Api\ProductController@toggleAvailability'
+      )
+    );
+    // update product
+    Route::post(
+      'product/update',
+      array(
+        'uses' => 'Api\ProductController@update'
+      )
+    );
 
-  // D
-  // destroy specific product
-  Route::post(
-    'product/destroy',
-    array('uses' => 'Api\ProductController@destroy')
-  );
-  
-  /*-----------------------------*   
-   *       product category      *
-   *-----------------------------*/
-  // C 
-  // create category
-  Route::post(
-    'product/category/create',
-    array('uses' => 'Api\CategoryController@create')
-  );
+    // D
+    // destroy specific product
+    Route::post(
+      'product/destroy',
+      array(
+        'uses' => 'Api\ProductController@destroy'
+      )
+    );
+    
+    /*-----------------------------*   
+     *       product category      *
+     *-----------------------------*/
+    // C 
+    // create category
+    Route::post(
+      'product/category/create',
+      array(
+        'uses' => 'Api\CategoryController@create'
+      )
+    );
 
-  // R
-  // category page: show categories
-  Route::get(
-    'product/category',
-    array('uses' => 'Api\CategoryController@index')
-  );
+    // R
+    // category page: show categories
+    Route::get(
+      'product/category',
+      array(
+        'uses' => 'Api\CategoryController@index'
+      )
+    );
 
-  // U
-  // update specific category
-  Route::post(
-    'product/category/update',
-    array('uses' => 'Api\CategoryController@update')
-  );  
+    // U
+    // update specific category
+    Route::post(
+      'product/category/update',
+      array(
+        'uses' => 'Api\CategoryController@update'
+      )
+    );  
 
-  // D
-  // destroy specific category
-  Route::post(
-    'product/category/destroy',
-    array('uses' => 'Api\CategoryController@destroy')
-  );
+    // D
+    // destroy specific category
+    Route::post(
+      'product/category/destroy',
+      array(
+        'uses' => 'Api\CategoryController@destroy'
+      )
+    );
 
+    // admin articles page: show all articles, CRUD
+    Route::get('articles', function () {
+      return view('Admin/articles');
+    });
 
-  Route::controller('product/categoryContorller', 'Api\CategoryController');
+    // admin single article page: show single article, CRUD
+    // fix: with id
+    Route::get('article', function () {
+      return view('Admin/article');
+    });
 
-  // admin articles page: show all articles, CRUD
-  Route::get('articles', function () {
-    return view('Admin/articles');
-  });
+    // admin orders page: show all orders
+    Route::get('orders', function () {
+      return view('Admin/orders');
+    });
 
-  // admin single article page: show single article, CRUD
-  // fix: with id
-  Route::get('article', function () {
-    return view('Admin/article');
-  });
+    // admin single order page: show single order
+    // fix: with id
+    Route::get('order', function () {
+      return view('Admin/order');
+    });
 
-  // admin orders page: show all orders
-  Route::get('orders', function () {
-    return view('Admin/orders');
-  });
-
-  // admin single order page: show single order
-  // fix: with id
-  Route::get('order', function () {
-    return view('Admin/order');
-  });
-
-  // admin users page: show all users
-  Route::get('users', function () {
-    return view('Admin/users');
-  });
+    // admin users page: show all users
+    Route::get('users', function () {
+      return view('Admin/users');
+    });
 });
