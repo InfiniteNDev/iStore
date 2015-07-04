@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class CategoryTest extends TestCase
 {
     /**
      * A basic functional test example.
@@ -13,7 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('admin')
-             ->seePageIs('admin');
+        $this->visit('admin/product/category');
+            // -> seePageIs('admin/product/category');
     }
 }

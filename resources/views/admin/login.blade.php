@@ -22,7 +22,7 @@
             {!! Form::label('username', 'Username', array('class' => 'control-label')) !!}
           </div> 
           <div class="col-sm-12 col-md-9 col-lg-9">
-            {!! Form::text('username', Input::old('username'), array('placeholder' => 'admin', 'class' => 'form-control')) !!}
+            {!! Form::text('username', Input::old('username'), array('placeholder' => 'Input username', 'class' => 'form-control')) !!}
           </div> 
         </div>
       </div>
@@ -34,7 +34,7 @@
             {!! Form::label('password', 'Password', array('class' => '')) !!}
           </div> 
           <div class="col-sm-12 col-md-9 col-lg-9">
-            {!! Form::password('password', array('placeholder' => 'admin', 'class' => 'form-control')) !!}
+            {!! Form::password('password', array('placeholder' => 'Input password', 'class' => 'form-control')) !!}
           </div> 
         </div>
       </div>

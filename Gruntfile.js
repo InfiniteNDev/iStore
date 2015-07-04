@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       },
       phpunit: {
         classes: {
-            dir: './app/tests/'   //location of the tests
+            dir: './tests/'   //location of the tests
         },
         options: {
             bin: 'vendor/bin/phpunit',
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
           }
         },
         tests: {
-          files: ['./app/controllers/*.php','./app/models/*.php'],  //the task will run only when you save files in this location
+          files: ['./app/Http/Controllers/*/*.php','./app/Models/*/*.php'],  //the task will run only when you save files in this location
           tasks: ['phpunit']
         }
       }

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\MessageBag;
 
-class loginController extends Controller
+class FrontLoginController extends Controller
 {
   /**
    * Display a listing of the resource.

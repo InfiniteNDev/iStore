@@ -18,9 +18,20 @@
           <li class='{{ Request::is( 'admin') ? 'active' : '' }}'>
             <a href="{{ URL::to('admin') }}">Home</a>
           </li>
-          <li class='{{ Request::is( 'admin/products') ? 'active' : '' }}'>
-            <a href="{{ URL::to('admin/products') }}">Products</a>
-            </li>
+          <li class='dropdown {{ Request::is( 'admin/product*') ? 'active' : '' }}'>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Products
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class='{{ Request::is('admin/product/products') ? 'active' : '' }}'>
+                <a href="{{ URL::to('admin/product/products') }}">Products</a>
+              </li>
+              <li class='{{ Request::is('admin/product/category') ? 'active' : '' }}'>
+                <a href="{{ URL::to('admin/product/category') }}">Category</a>
+              </li>
+            </ul>
+          </li>
           <li class='{{ Request::is( 'admin/orders') ? 'active' : '' }}'>
             <a href="{{ URL::to('admin/orders') }}">Orders</a>
           </li>
