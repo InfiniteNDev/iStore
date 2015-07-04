@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>iStore</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/style.css') }}">
+  {!! HTML::style('assets/stylesheets/style.css') !!}
 </head>
 <body>
   
@@ -21,6 +21,6 @@
   {{-- end footer --}}
 
 
-  <script type="text/javascript" src="{{ asset('assets/javascripts/frontend.js') }}"></script>
+  {!! HTML::script('assets/javascripts/frontend.js') !!}
 </body>
 </html>

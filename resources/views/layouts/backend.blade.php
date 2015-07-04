@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>iStore - BackEnd</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/style.css') }}">
+  {!! HTML::style('assets/stylesheets/style.css') !!}
 </head>
 <body>
   
@@ -20,7 +20,6 @@
   @include('Layouts.backPartials.footer')
   {{-- end footer --}}
 
-
-  <script type="text/javascript" src="{{ asset('assets/javascripts/backend.js') }}"></script>
+  {!! HTML::script('assets/javascripts/backend.js') !!}
 </body>
 </html>

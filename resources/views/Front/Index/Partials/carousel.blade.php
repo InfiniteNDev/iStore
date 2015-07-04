@@ -10,19 +10,19 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="{{ asset('assets/images/carousel-1.jpg') }}" alt="carousel-1">
+        {!! HTML::image('assets/images/carousel-1.jpg', 'carousel') !!}
         <div class="carousel-caption">
           carousel-1
         </div>
       </div>
       <div class="item">
-        <img src="{{ asset('assets/images/carousel-2.jpg') }}" alt="carousel-2">
+        {!! HTML::image('assets/images/carousel-2.jpg', 'carousel') !!}
         <div class="carousel-caption">
           carousel-2
         </div>
       </div>
       <div class="item">
-        <img src="{{ asset('assets/images/carousel-3.jpg') }}" alt="carousel-3">
+        {!! HTML::image('assets/images/carousel-3.jpg', 'carousel') !!}
         <div class="carousel-caption">
           carousel-3
         </div>
