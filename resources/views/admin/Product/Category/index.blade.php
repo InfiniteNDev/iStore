@@ -28,7 +28,7 @@
         <div class="form-group">
           {!! Form::Label('name', 'Category name', array('sr-only')) !!}
           {!! Form::text('name', Input::old('name'), array('placeholder' => 'Input new category name', 'class' => 'form-control')) !!}
-          {!! Form::submit('Create Category', array('class' => 'btn btn-default', 'name' => 'createCategory')) !!}
+          {!! Form::submit('Create Category', array('class' => 'btn btn-primary', 'name' => 'createCategory')) !!}
         </div>
       {!! Form::close() !!}
     </div>

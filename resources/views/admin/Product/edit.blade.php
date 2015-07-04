@@ -68,14 +68,12 @@
         {!! Form::file('image') !!}
       </div>
 
-      {!! Form::submit('Update', array('class' => 'btn btn-default', 'name' => 'submit')) !!}
+      {!! Form::submit('Update', array('class' => 'btn btn-primary', 'name' => 'submit')) !!}
 
     </div>
     {!! Form::close() !!}
   </div>
   {{-- end create category  --}}
-
-  <hr/>
 
 </div>
 
