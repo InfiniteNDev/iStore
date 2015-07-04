@@ -13,7 +13,8 @@ class CategoryTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('admin/product/category');
+        $this->visit('admin/product/category')
+            ->press('createCategory');
             // -> seePageIs('admin/product/category');
     }
 }

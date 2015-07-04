@@ -27,6 +27,9 @@
               <li class='{{ Request::is('admin/product/products') ? 'active' : '' }}'>
                 <a href="{{ URL::to('admin/product/products') }}">Products</a>
               </li>
+              <li class='{{ Request::is('admin/product/new') ? 'active' : '' }}'>
+                <a href="{{ URL::to('admin/product/new') }}">Add Product</a>
+              </li>
               <li class='{{ Request::is('admin/product/category') ? 'active' : '' }}'>
                 <a href="{{ URL::to('admin/product/category') }}">Category</a>
               </li>

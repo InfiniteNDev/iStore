@@ -28,7 +28,7 @@
         <div class="form-group">
           {!! Form::Label('name', 'Category name', array('sr-only')) !!}
           {!! Form::text('name', Input::old('name'), array('placeholder' => 'Input new category name', 'class' => 'form-control')) !!}
-          {!! Form::submit('Create Category', array('class' => 'btn btn-default')) !!}
+          {!! Form::submit('Create Category', array('class' => 'btn btn-default', 'name' => 'createCategory')) !!}
         </div>
       {!! Form::close() !!}
     </div>
@@ -59,7 +59,7 @@
               <td>
                 {!! Form::open(array('url' => 'admin/product/category/destroy', 'class'=>'form-inline')) !!}
                   {!! Form::hidden('id', $category->id) !!}
-                  {!! Form::submit('delete', array('class' => 'btn btn-default')) !!}
+                  {!! Form::submit('delete', array('class' => 'btn btn-default', 'name' => 'delete')) !!}
                 {!! Form::close() !!}
               </td>
             </tr>

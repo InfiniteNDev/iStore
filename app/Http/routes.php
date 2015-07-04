@@ -111,21 +111,73 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
   /*---------------------*   
    *       product       *
    *---------------------*/
+  // C
+  // add product page
+  Route::get(
+    'product/new',
+    array('uses' => 'Api\ProductController@showNew')
+  );
+  // create product action
+  Route::post(
+    'product/create',
+    array('uses' => 'Api\ProductController@create')
+  );
 
-  // admin products page: show all products, CRUD
-  Route::get('product/products', function () {
-    return view('Admin/Product/products');
-  });
-
-  Route::get('product/category', array('uses' => 'Api\CategoryController@index'));
-  Route::post('product/category/create', array('uses' => 'Api\CategoryController@create'));
-  Route::post('product/category/destroy', array('uses' => 'Api\CategoryController@destroy'));
-
+  // R
+  // admin products page: show all products
+  Route::get(
+    'product/products',
+    array('uses' => 'Api\ProductController@index')
+  );
   // admin single product page: show single product, CRUD
   // fix: with id
   Route::get('product/product', function () {
     return view('Admin/product');
   });
+
+  // U
+  // edit specific product
+  Route::get(
+    'product/edit',
+    array('uses' => 'Api\ProductController@edit')
+  );
+  // toggle availability
+  Route::post(
+    'product/toggleAvailability',
+    array('uses' => 'Api\ProductController@toggleAvailability')
+  );
+  // update product
+  Route::post(
+    'product/update',
+    array('uses' => 'Api\ProductController@update')
+  );
+
+  // D
+  // destroy specific product
+  Route::post(
+    'product/destroy',
+    array('uses' => 'Api\ProductController@destroy')
+  );
+  
+  /*-----------------------------*   
+   *       product category      *
+   *-----------------------------*/
+  // category page: show categories
+  Route::get(
+    'product/category',
+    array('uses' => 'Api\CategoryController@index')
+  );
+  // create category
+  Route::post(
+    'product/category/create',
+    array('uses' => 'Api\CategoryController@create')
+  );
+  // destroy specific category
+  Route::post(
+    'product/category/destroy',
+    array('uses' => 'Api\CategoryController@destroy')
+  );
+
 
   Route::controller('product/categoryContorller', 'Api\CategoryController');
 
