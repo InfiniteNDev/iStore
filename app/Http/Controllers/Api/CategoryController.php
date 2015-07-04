@@ -95,9 +95,23 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update()
     {
-        //
+         $validator = Validator::make(Input::all(), Category::$rules);
+
+        if ($validator->passes()) {
+            $category = Category::find(Input::get('id'));
+            $category->name = Input::get('name');
+            $category->save();
+
+            return Redirect::to('admin/product/category')
+                -> with('message', 'Category created.');
+        }
+
+        return Redirect::to('admin/product/category')
+            -> with('message', 'Something went wrong, please try again.')
+            -> withErrors($validator)
+            -> with('categories', Category::all());
     }
 
     /**

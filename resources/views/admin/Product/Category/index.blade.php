@@ -9,7 +9,8 @@
     
     {{-- error --}}
     @if ($errors->has())
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <p>The following errors are occurred:</p>
         <ul class="">
           @foreach ($errors->all() as $error)
@@ -17,7 +18,6 @@
           @endforeach
         </ul>
       </div>
-      <hr/>
     @endif
     {{-- end error --}}
 
@@ -54,12 +54,16 @@
                 {!! $category->id !!}
               </td>
               <td>
-                {!! $category->name !!}
+                {!! Form::open(array('url' => 'admin/product/category/update', 'class'=>'form-inline')) !!}
+                  {!! Form::hidden('id', $category->id) !!}
+                  {!! Form::text('name', $category->name, array('class' => 'form-control')) !!}
+                  {!! Form::submit('update', array('class' => 'btn btn-success')) !!}
+                {!! Form::close() !!}
               </td>
               <td>
                 {!! Form::open(array('url' => 'admin/product/category/destroy', 'class'=>'form-inline')) !!}
                   {!! Form::hidden('id', $category->id) !!}
-                  {!! Form::submit('delete', array('class' => 'btn btn-default', 'name' => 'delete')) !!}
+                  {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
                 {!! Form::close() !!}
               </td>
             </tr>

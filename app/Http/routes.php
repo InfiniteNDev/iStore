@@ -162,16 +162,28 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
   /*-----------------------------*   
    *       product category      *
    *-----------------------------*/
-  // category page: show categories
-  Route::get(
-    'product/category',
-    array('uses' => 'Api\CategoryController@index')
-  );
+  // C 
   // create category
   Route::post(
     'product/category/create',
     array('uses' => 'Api\CategoryController@create')
   );
+
+  // R
+  // category page: show categories
+  Route::get(
+    'product/category',
+    array('uses' => 'Api\CategoryController@index')
+  );
+
+  // U
+  // update specific category
+  Route::post(
+    'product/category/update',
+    array('uses' => 'Api\CategoryController@update')
+  );  
+
+  // D
   // destroy specific category
   Route::post(
     'product/category/destroy',
