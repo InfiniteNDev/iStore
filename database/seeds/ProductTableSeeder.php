@@ -28,12 +28,11 @@ class ProductTableSeeder extends Seeder
           'discount'     => 1,
           'stock'        => (integer)rand(0, 10000),
           'availability' => 1,
-          'image'        => 'assets/images/products/2d6c3b8f985e61fb962e80f73d5244e6.jpg'
-          // 'image'        => $faker->image(
-              // $dir = 'public/assets/images/products',
-              // $width = 640,
-              // $height = 480
-            // )
+          'image'        => $faker->image(
+              $dir = 'public/assets/images/products',
+              $width = 200,
+              $height = 200
+            )
           )
         );
     }

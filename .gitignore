@@ -4,3 +4,4 @@
 /.sass-cache
 Homestead.yaml
 .env
+/public/assets/images

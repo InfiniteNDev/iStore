@@ -21,6 +21,16 @@
   @endif
   {{-- end error --}}
 
+  {{-- message --}}
+  @if (Session::has('message'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <p>{{ Session::get('message') }}</p>
+      </ul>
+    </div>
+  @endif
+  {{-- end message --}}
+
   {{-- create category  --}}
   <div>
     {!! Form::open(array('url' => 'admin/product/update', 'class' => '', 'files' => true)) !!}
@@ -65,7 +75,7 @@
       <div class="form-group">
         {!! Form::Label('image', 'Product Image', array('sr-only')) !!}
         <div>
-        {!! HTML::image($product->image, $product->title, array('class' => 'img-rounded', 'height' => '200')) !!}
+        {!! HTML::image(str_replace('public/', '', $product->image), $product->title, array('class' => 'img-rounded', 'height' => '200')) !!}
         </div>
         <hr/>
         {!! Form::file('image', array('class' => 'form-group')) !!}

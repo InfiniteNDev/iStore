@@ -80,15 +80,14 @@ class ProductController extends Controller
             
             $image = Input::file('image');
             if ($image) {
-                $filename = date('Y-m-d-H:i:s') . "-" . $image->getClientOriginalName();
+                $filename = $image->getClientOriginalName();
                 $path = public_path('assets/images/products/' . $filename);
 
                 // echo dd(is_writable(public_path('assets/images/products')));
 
-                Image::make($image
-                    ->getRealPath())
-                    ->resize(200, 200)
-                    ->save($path);
+                Image::make($image->getRealPath())
+                    -> resize(200, 200)
+                    -> save($path);
                 
                 $product->image = 'assets/images/products/' . $filename;
 
@@ -175,19 +174,20 @@ class ProductController extends Controller
             
             $image = Input::file('image');
             if ($image) {
-                $filename = date('Y-m-d-H:i:s') . "-" . $image->getClientOriginalName();
+                $filename = date('Y-m-d-H-i-s') . "-" . $image->getClientOriginalName();
                 $path = public_path('assets/images/products/' . $filename);
 
                 // echo dd(is_writable(public_path('assets/images/products')));
 
                 Image::make($image->getRealPath())->resize(200, 200)->save($path);
                 
-                $product->image = 'assets/images/products/' . $filename;
+                $product->image = 'public/assets/images/products/' . $filename;
             }
 
             $product->save();
 
-            return Redirect::to('admin/product/products')
+            return Redirect::back()
+                -> withInput()
                 -> with('message', 'Product ' . $product->title . ' updated.');
         }
 
