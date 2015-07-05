@@ -49,55 +49,63 @@ Route::group(
         'uses' => 'FrontLoginController@doLogout'
       )
     );
+});
 
-    // frontend's homepage
-    Route::get('/', function () {
-      return view('Front/Index/index');
-    });
+// frontend's homepage
+Route::get('/', function () {
+  return view('Front/Index/index');
+});
 
-    // about page
-    Route::get('about', function () {
-      return view('Front/About/about');
-    });
+// about page
+Route::get('about', function () {
+  return view('Front/About/about');
+});
 
-    // products page: show all products
-    Route::get('products', function () {
-      return view('Front/products');
-    });
+/*---------------------*   
+ *       product       *
+ *---------------------*/
+// products page: show all products
+Route::get(
+  'product/products',
+  array(
+    'uses' => 'Api\ProductController@index'
+  )
+);
 
-    // product's detail page: show single product
-    // fix: enter with id
-    Route::get('product', function () {
-      return view('Front/product');
-    });
+// product's detail page: show single product
+Route::get(
+  'product/product',
+  array(
+    'uses' => 'Api\ProductController@show'
+  )
+);
 
-    // articles page: show all articles
-    Route::get('articles', function () {
-      return view('Front/articles');
-    });
+// articles page: show all articles
+Route::get('articles', function () {
+  return view('Front/articles');
+});
 
-    // article's detial page: show single article
-    // fix: enter with id
-    Route::get('article', function () {
-      return view('article');
-    });
+// article's detial page: show single article
+// fix: enter with id
+Route::get('article', function () {
+  return view('article');
+});
 
-    // cart page: show cart
-    Route::get('cart', function () {
-      return view('Front/cart');
-    });
+// cart page: show cart
+Route::get('cart', function () {
+  return view('Front/cart');
+});
 
-    // checkout page: show checkout
-    Route::get('checkout', function () {
-      return view('Front/checkout');
-    });
+// checkout page: show checkout
+Route::get('checkout', function () {
+  return view('Front/checkout');
+});
 
-    // my account page
-    Route::get('account', function () {
-        return view('Front/account');
-    });
+// my account page
+Route::get('account', function () {
+    return view('Front/account');
+});
 
-  });
 
 
 /*-------------------*   

@@ -5796,6 +5796,11 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+.front-products-item {
+  padding: 20px;
+  border: 1px solid #dddddd;
+  margin: 20px; }
+
 .form-group label {
   line-height: 34px;
   margin-bottom: 0; }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Api\Controller;
@@ -19,6 +19,11 @@ use File;
 
 class ProductController extends Controller
 {
+    public static $availabilities = array(
+        '1' => 'In Stock',
+        '0' => 'Out of Stock'
+    );
+
     public function __construct() {
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
@@ -35,10 +40,17 @@ class ProductController extends Controller
         foreach (Category::all() as $category) {
             $categories[$category->id] = $category->name;
         }
+
         // show view
-        return view('admin/product/products')
-            -> with('products', Product::paginate(5))
-            -> with('categories', $categories);
+        if (Request::is('admin*')) {
+            return view('admin/product/products')
+                -> with('products', Product::paginate(5))
+                -> with('categories', $categories);
+        }
+        return view('front/product/products')
+            -> with('products', Product::paginate(9))
+            -> with('categories', $categories)
+            -> with('availabilities', $this::$availabilities);
     }
 
     /**
@@ -123,7 +135,16 @@ class ProductController extends Controller
      */
     public function show()
     {
-        // 
+        // get category
+        $categories = array();
+        foreach (Category::all() as $category) {
+            $categories[$category->id] = $category->name;
+        }
+        // show view
+        return view('front/product/product')
+            -> with('availabilities', $this::$availabilities)
+            -> with('product', Product::find(Input::get('id')))
+            -> with('categories', $categories);
     }
 
     /**

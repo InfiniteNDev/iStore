@@ -18,8 +18,8 @@
           <li class='{{ Request::is('/') ? 'active' : '' }}'>
             <a href="/">Home</a>
           </li>
-          <li class='{{ Request::is('products') ? 'active' : '' }}'>
-            <a href="{{ URL::to('products') }}">Shop</a>
+          <li class='{{ Request::is('product/products') ? 'active' : '' }}'>
+            <a href="{{ URL::to('product/products') }}">Shop</a>
           </li>
           <li class='{{ Request::is('articles') ? 'active' : '' }}'>
             <a href="{{ URL::to('articles') }}">Blog</a>
