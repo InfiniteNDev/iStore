@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->decimal('price', 6, 2);
-            $table->float('discount', 3, 2);
+            $table->float('discount', 3, 2)->default(1);
             $table->integer('stock');
             $table->boolean('availability')->default(1);
             $table->string('image');

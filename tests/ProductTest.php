@@ -4,7 +4,8 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CategoryTest extends TestCase
+
+class ProductTest extends TestCase
 {
     /**
      * A basic functional test example.
@@ -14,8 +15,11 @@ class CategoryTest extends TestCase
     public function testBasicExample()
     {
         Auth::loginUsingId(8);
-        $this -> visit('admin/product/category')
-              -> seePageIs('admin/product/category')
-              -> press('Update');
+
+        $this -> visit('admin/product/products')
+              -> seePageIs('admin/product/products')
+              -> press('Update')
+              -> press('Delete')
+              -> press('Edit');
     }
 }

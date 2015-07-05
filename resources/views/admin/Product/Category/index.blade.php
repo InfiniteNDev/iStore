@@ -54,16 +54,24 @@
                 {!! $category->id !!}
               </td>
               <td>
-                {!! Form::open(array('url' => 'admin/product/category/update', 'class'=>'form-inline')) !!}
+                {!! Form::open(
+                  array(
+                    'url'   => 'admin/product/category/update',
+                    'class' =>'form-inline')) 
+                !!}
                   {!! Form::hidden('id', $category->id) !!}
                   {!! Form::text('name', $category->name, array('class' => 'form-control')) !!}
-                  {!! Form::submit('update', array('class' => 'btn btn-success')) !!}
+                  {!! Form::submit('Update', array('class' => 'btn btn-success')) !!}
                 {!! Form::close() !!}
               </td>
               <td>
-                {!! Form::open(array('url' => 'admin/product/category/destroy', 'class'=>'form-inline')) !!}
+                {!! Form::open(
+                  array(
+                    'url'   => 'admin/product/category/destroy',
+                    'class' =>'form-inline')) 
+                !!}
                   {!! Form::hidden('id', $category->id) !!}
-                  {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
+                  {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
                 {!! Form::close() !!}
               </td>
             </tr>

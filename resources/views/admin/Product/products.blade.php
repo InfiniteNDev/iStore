@@ -69,22 +69,53 @@
                 {!! $product->stock !!}
               </td>
               <td>
-                {!! Form::open(array('url' => 'admin/product/toggleAvailability', 'class' => 'form-inline')) !!}
+                {!! Form::open(
+                  array(
+                  'url'   => 'admin/product/toggleAvailability',
+                  'class' => 'form-inline'
+                  )
+                ) !!}
                   {!! Form::hidden('id', $product->id) !!}
                   {!! Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability, array('class' => 'form-control')) !!}
-                  {!! Form::submit('Update', array('class' => 'btn btn-primary')) !!}
+                  {!! Form::submit(
+                    'Update',
+                    array(
+                      'class' => 'btn btn-primary'
+                    )
+                  ) !!}
                 {!! Form::close() !!}
               </td>
               <td>
-                {!! Form::open(array('method' => 'get', 'url' => 'admin/product/edit', 'class'=>'form-inline')) !!}
+                {!! Form::open(
+                  array(
+                  'method' => 'get',
+                  'url'    => 'admin/product/edit',
+                  'class'  =>'form-inline'
+                  )
+                ) !!}
                   {!! Form::hidden('id', $product->id) !!}
-                  {!! Form::submit('edit', array('class' => 'btn btn-success')) !!}
+                  {!! Form::submit(
+                    'Edit',
+                    array(
+                      'class' => 'btn btn-success'
+                    )
+                  ) !!}
                 {!! Form::close() !!}
               </td>
               <td>
-                {!! Form::open(array('url' => 'admin/product/destroy', 'class'=>'form-inline')) !!}
+                {!! Form::open(
+                  array(
+                  'url'   => 'admin/product/destroy',
+                  'class' =>'form-inline'
+                  )
+                ) !!}
                   {!! Form::hidden('id', $product->id) !!}
-                  {!! Form::submit('delete', array('class' => 'btn btn-danger', 'name' => 'delete')) !!}
+                  {!! Form::submit(
+                    'Delete',
+                    array(
+                      'class' => 'btn btn-danger'
+                    )
+                  ) !!}
                 {!! Form::close() !!}
               </td>
             </tr>
