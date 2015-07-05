@@ -93,7 +93,7 @@ class ProductController extends Controller
             $product->save();
 
             return Redirect::to('admin/product/products')
-                -> with('message', 'Product created.');
+                -> with('message', 'Product ' . $product->title . ' created.');
         }
 
         return Redirect::back()
@@ -184,7 +184,7 @@ class ProductController extends Controller
             $product->save();
 
             return Redirect::to('admin/product/products')
-                -> with('message', 'Product updated.');
+                -> with('message', 'Product ' . $product->title . ' updated.');
         }
 
         return Redirect::back()
@@ -208,7 +208,7 @@ class ProductController extends Controller
             File::delete('public/'.$product->image);
             $product->delete();
             return Redirect::back()
-                -> with('message', 'Product deleted.');
+                -> with('message', 'Product ' . $product->title . ' deleted.');
         }
 
         return Redirect::back()
@@ -224,7 +224,7 @@ class ProductController extends Controller
             $product->availability = Input::get('availability');
             $product->save();
             return Redirect::to('admin/product/products')
-                -> with('message', 'Product updated.');
+                -> with('message', 'Product ' . $product->title . ' updated.');
         }
 
         return Redirect::to('admin/product/products')
