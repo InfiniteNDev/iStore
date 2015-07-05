@@ -63,9 +63,12 @@
       </div>
 
       <div class="form-group">
-        {{-- fix: show old image --}}
         {!! Form::Label('image', 'Product Image', array('sr-only')) !!}
-        {!! Form::file('image') !!}
+        <div>
+        {!! HTML::image($product->image, $product->title, array('class' => 'img-rounded', 'height' => '200')) !!}
+        </div>
+        <hr/>
+        {!! Form::file('image', array('class' => 'form-group')) !!}
       </div>
 
       {!! Form::submit('Update', array('class' => 'btn btn-primary', 'name' => 'submit')) !!}

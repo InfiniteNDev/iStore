@@ -37,7 +37,7 @@ class ProductController extends Controller
         }
         // show view
         return view('admin/product/products')
-            -> with('products', Product::paginate(10))
+            -> with('products', Product::paginate(5))
             -> with('categories', $categories);
     }
 
@@ -85,9 +85,13 @@ class ProductController extends Controller
 
                 // echo dd(is_writable(public_path('assets/images/products')));
 
-                Image::make($image->getRealPath())->resize(200, 200)->save($path);
+                Image::make($image
+                    ->getRealPath())
+                    ->resize(200, 200)
+                    ->save($path);
                 
                 $product->image = 'assets/images/products/' . $filename;
+
             }
 
             $product->save();

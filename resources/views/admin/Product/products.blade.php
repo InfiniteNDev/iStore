@@ -5,8 +5,6 @@
   <div class="container">
     <h3>Products List</h3>
 
-    <hr/>
-    
     {{-- error --}}
     @if ($errors->has())
       <div class="alert alert-danger alert-dismissible" role="alert">

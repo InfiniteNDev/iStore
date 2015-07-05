@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('Admin/Product/Category/index')
-            -> with('categories', Category::paginate(10));
+            -> with('categories', Category::paginate(5));
     }
 
     /**
