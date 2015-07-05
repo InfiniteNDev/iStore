@@ -124,7 +124,7 @@
       </table>
 
       {{-- pagination --}}
-      {!! $products->render() !!}
+      {!! $products->appends(Request::except('page'))->render() !!}
       {{-- end pagination --}}
 
     </div>
