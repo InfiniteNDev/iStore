@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('Admin/Product/Category/index')
-            -> with('categories', Category::all());
+            -> with('categories', Category::paginate(10));
     }
 
     /**
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             $category->save();
 
             return Redirect::to('admin/product/category')
-                -> with('message', 'Category created.');
+                -> with('message', 'Category ' . $category->name . ' created.');
         }
 
         return Redirect::to('admin/product/category')
@@ -105,7 +105,7 @@ class CategoryController extends Controller
             $category->save();
 
             return Redirect::to('admin/product/category')
-                -> with('message', 'Category created.');
+                -> with('message', 'Category ' . $category->name . ' updated.');
         }
 
         return Redirect::to('admin/product/category')
@@ -128,7 +128,7 @@ class CategoryController extends Controller
         if ($category) {
             $category->delete();
             return Redirect::to('admin/product/category')
-                -> with('message', 'Category deleted.');
+                -> with('message', 'Category ' . $category->name . ' deleted.');
         }
 
         return Redirect::to('admin/product/category')

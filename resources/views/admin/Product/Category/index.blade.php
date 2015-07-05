@@ -21,6 +21,16 @@
     @endif
     {{-- end error --}}
 
+    {{-- message --}}
+    @if (Session::has('message'))
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p>{{ Session::get('message') }}</p>
+        </ul>
+      </div>
+    @endif
+    {{-- end message --}}
+
     {{-- create category  --}}
     <div>
       <h3>Create New Category</h3>
@@ -78,6 +88,11 @@
           @endforeach
         </tbody>
       </table>
+    
+      {{-- pagination --}}
+      {!! $categories->render() !!}
+      {{-- end pagination --}}
+
     </div>
     {{-- end show category --}}
   </div>
