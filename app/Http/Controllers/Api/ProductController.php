@@ -37,7 +37,7 @@ class ProductController extends Controller
         }
         // show view
         return view('admin/product/products')
-            -> with('products', Product::all())
+            -> with('products', Product::paginate(10))
             -> with('categories', $categories);
     }
 

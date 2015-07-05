@@ -122,6 +122,11 @@
           @endforeach
         </tbody>
       </table>
+
+      {{-- pagination --}}
+      {!! $products->render() !!}
+      {{-- end pagination --}}
+
     </div>
     {{-- end show products --}}
   </div>
