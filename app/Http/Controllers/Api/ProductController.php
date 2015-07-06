@@ -44,7 +44,7 @@ class ProductController extends Controller
         // show view
         if (Request::is('admin*')) {
             return view('admin/product/products')
-                -> with('products', Product::paginate(5))
+                -> with('products', Product::paginate(9))
                 -> with('categories', $categories);
         }
         return view('front/product/products')
