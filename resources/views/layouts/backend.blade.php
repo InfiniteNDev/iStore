@@ -21,5 +21,7 @@
   {{-- end footer --}}
 
   {!! HTML::script('assets/javascripts/backend.js') !!}
+
+  @yield('script')
 </body>
 </html>
