@@ -79,9 +79,10 @@
                     'Delete', 
                     array(
                       'class' => 'btn btn-danger',
+                      'type'  => 'button',
                       'data-toggle' => 'modal',
                       'data-target' => '#confirm-delete',
-                      'type'  => 'button'
+                      'data-id' => $category->id
                     )
                   ) !!}
               </td>
@@ -108,7 +109,7 @@
                 'url'   => 'admin/product/category/destroy',
                 'class' =>'form-inline')) 
             !!}
-              {!! Form::hidden('id', $category->id) !!}
+              <div class="category-id"></div>
               {!! Form::button('Close', array('class' => 'btn btn-default',
               'data-dismiss' => 'modal',
               'type' => 'button')) !!}
@@ -132,4 +133,17 @@
     {{-- end show category --}}
   </div>
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+  $('#confirm-delete').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var id = button.data('id'); // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this);
+    modal.find('.category-id').html('<input name="id" type="hidden" value="' + id + '">');
+  })
+</script>
 @endsection
