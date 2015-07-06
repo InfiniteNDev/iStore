@@ -42,6 +42,11 @@ class CategoryController extends Controller
     {
         $validator = Validator::make(Input::all(), Category::$rules);
 
+        if (Category::where('name', '=', Input::get('name'))->first()) {
+            return Redirect::to('admin/product/category')
+                -> withErrors('There already has ' . Input::get('name') . ' category.');            
+        }
+
         if ($validator->passes()) {
             $category = new Category;
             $category->name = Input::get('name');

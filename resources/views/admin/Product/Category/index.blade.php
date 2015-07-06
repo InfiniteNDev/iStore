@@ -75,20 +75,55 @@
                 {!! Form::close() !!}
               </td>
               <td>
-                {!! Form::open(
-                  array(
-                    'url'   => 'admin/product/category/destroy',
-                    'class' =>'form-inline')) 
-                !!}
-                  {!! Form::hidden('id', $category->id) !!}
-                  {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                {!! Form::close() !!}
+                  {!! Form::button(
+                    'Delete', 
+                    array(
+                      'class' => 'btn btn-danger',
+                      'data-toggle' => 'modal',
+                      'data-target' => '#confirm-delete',
+                      'type'  => 'button'
+                    )
+                  ) !!}
               </td>
             </tr>
           @endforeach
         </tbody>
       </table>
     
+      {{-- delete confirm dialog --}}
+      <!-- Modal -->
+      <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="confirm">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="confirm">Confirm</h4>
+            </div>
+            <div class="modal-body">
+              Are you sure?
+            </div>
+            <div class="modal-footer">
+            {!! Form::open(
+              array(
+                'url'   => 'admin/product/category/destroy',
+                'class' =>'form-inline')) 
+            !!}
+              {!! Form::hidden('id', $category->id) !!}
+              {!! Form::button('Close', array('class' => 'btn btn-default',
+              'data-dismiss' => 'modal',
+              'type' => 'button')) !!}
+              {!! Form::submit('Delete', 
+              array(
+                'class' => 'btn btn-danger'
+                )
+              ) !!}
+            {!! Form::close() !!}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{-- end delete confirm dialog --}}
+
       {{-- pagination --}}
       {!! $categories->render() !!}
       {{-- end pagination --}}
