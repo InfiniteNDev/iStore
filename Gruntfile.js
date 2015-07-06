@@ -94,7 +94,11 @@ module.exports = function(grunt) {
           }
         },
         tests: {
-          files: ['./app/Http/Controllers/*/*.php','./app/Models/*/*.php'],  //the task will run only when you save files in this location
+          files: [
+          './app/Http/Controllers/*/*.php',
+          './app/Models/*/*.php',
+          './app/Libs/*'
+          ],  //the task will run only when you save files in this location
           tasks: ['phpunit']
         }
       }

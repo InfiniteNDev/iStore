@@ -69,7 +69,7 @@
 
       <div class="form-group">
         {!! Form::Label('availability', 'Availability', array('sr-only')) !!}
-        {!! Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), 1, array('class' => 'form-control')) !!}
+        {!! Form::select('availability', array('1'=>'In Stock', '0'=>'Out of Stock'), $product->availability, array('class' => 'form-control')) !!}
       </div>
 
       <div class="form-group">

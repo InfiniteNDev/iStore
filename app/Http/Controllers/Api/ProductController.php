@@ -19,10 +19,6 @@ use File;
 
 class ProductController extends Controller
 {
-    public static $availabilities = array(
-        '1' => 'In Stock',
-        '0' => 'Out of Stock'
-    );
 
     public function __construct() {
         $this->beforeFilter('csrf', array('on' => 'post'));
@@ -49,8 +45,7 @@ class ProductController extends Controller
         }
         return view('front/product/products')
             -> with('products', Product::paginate(9))
-            -> with('categories', $categories)
-            -> with('availabilities', $this::$availabilities);
+            -> with('categories', $categories);
     }
 
     /**
@@ -142,7 +137,6 @@ class ProductController extends Controller
         }
         // show view
         return view('front/product/product')
-            -> with('availabilities', $this::$availabilities)
             -> with('product', Product::find(Input::get('id')))
             -> with('categories', $categories);
     }

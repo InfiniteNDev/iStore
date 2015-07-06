@@ -7,70 +7,73 @@
 
   <hr/>
   
-  {!! HTML::image(str_replace('public/', '', $product->image), $product->title, array('class' => 'img-rounded', 'height' => '200')) !!}
-
-  {{-- create category  --}}
-  <div>
-    <div class="form-group">
-      {!! Form::hidden('id', $product->id) !!}
-
-      <div class="form-group">
-        {!! Form::Label('title', 'Product title', array('sr-only')) !!}
+  <div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      {!! HTML::image(str_replace('public/', '', $product->image), $product->title, array('class' => 'img-rounded', 'height' => '200')) !!}
+    </div>
+    
+    {{-- product info  --}}
+    <div class="col-sm-12 col-md-8 col-lg-8">
+      <p>
+        <strong>Product title: </strong>
         {!! $product->title !!}
-      </div>
+      </p>
 
-      <div class="form-group">
-        {!! Form::Label('category_id', 'Product Category', array('sr-only')) !!}
-        {!! $categories[$product->category_id] !!}
-      </div>
-
-      <div class="form-group">
-        {!! Form::Label('description', 'Product Description', array('sr-only')) !!}
-        {!! $product->description !!}
-      </div>
-
-      <div class="form-group">
-        {!! Form::Label('price', 'Product Price', array('sr-only')) !!}
+      <p>
+        <strong>Product Price: </strong>
         {!! $product->price !!}
-      </div>
+      </p>
 
-      <div class="form-group">
-        {!! Form::Label('discount', 'Product Discount', array('sr-only')) !!}
-        {!! $product->discount !!}
-      </div>
+      <p>
+        <strong>Product Discount: </strong>
+        {!! App\Libs\Discount::displayWithNum($product->discount) !!}
+      </p>
 
-      <div class="form-group">
-        {!! Form::Label('stock', 'Product Stock', array('sr-only')) !!}
+      <p>
+        <strong>Product Stock: </strong>
         {!! $product->stock !!}
-      </div>
+      </p>
 
-      <div class="form-group">
-        {!! Form::Label('availability', 'Availability', array('sr-only')) !!}
-        {!! $availabilities[$product->availability] !!}
-      </div>
+      <p>
+        <strong>Availability: </strong>
+        {!! App\Libs\Availability::display($product->availability) !!}
+      </p>
 
       {{-- goto checkout --}}
       {!! Form::open(array('url' => '', 'method' => 'get')) !!}
-      {!! Form::hidden('id', $product->id) !!}
-      {!! Form::submit('Buy', array(
-        'class' => 'btn btn-primary'
-        )
+        {!! Form::hidden('id', $product->id) !!}
+        {!! Form::submit('Buy', array(
+          'class' => 'btn btn-primary')
         ) !!}
       {!! Form::close() !!}
-        <br/>
+      <br/>
 
       {{-- add to cart --}}
       {!! Form::open(array('url' => '')) !!}
         {!! Form::submit('Add to Cart', array(
-          'class' => 'btn btn-default'
-          )
-          ) !!}
+          'class' => 'btn btn-default')
+        ) !!}
       {!! Form::close() !!}
 
-        </div>
-      </div>
-      {{-- end create category  --}}
-
     </div>
+    {{-- end product info  --}}
 
-    @endsection
+  </div>
+
+  <hr/>
+  
+  <div class="form-group">
+    <h3>Product Category</h3>
+    <p>
+      {!! $categories[$product->category_id] !!}
+    </p>
+
+    <h3>Product Description</h3>
+    <p>
+    {!! $product->description !!}
+    </p>
+  </div>
+
+</div>
+
+@endsection

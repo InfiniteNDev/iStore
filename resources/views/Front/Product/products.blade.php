@@ -19,14 +19,8 @@
 
         <h4 class="text-center">{!! $item->title !!}</h4>
         <p class="text-center">{!! $item->price !!}</p>
-        <p class="text-center">
-          @if($item->discount == 1)
-            No Discount
-          @else
-            On Sale
-          @endif
-          </p>
-        <p class="text-center">{!! $availabilities[$item->availability] !!}</p>
+        <p class="text-center">Discount: {!! App\Libs\Discount::displayWithNum($item->discount) !!}</p>
+        <p class="text-center">{!! App\Libs\Availability::display($item->availability) !!}</p>
 
         <div class="form-inline">
           <div class="form-group">

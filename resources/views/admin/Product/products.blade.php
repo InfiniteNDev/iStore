@@ -61,7 +61,7 @@
                 {!! $product->price !!}
               </td>
               <td>
-                {!! $product->discount !!}
+                {!! App\Libs\Discount::displayWithNum($product->discount) !!}
               </td>
               <td>
                 {!! $product->stock !!}
