@@ -52,9 +52,7 @@ class CategoryController extends Controller
         }
 
         return Redirect::to('admin/product/category')
-            -> with('message', 'Something went wrong, please try again.')
-            -> withErrors($validator)
-            -> withInput();
+            -> withErrors($validator);
     }
 
     /**

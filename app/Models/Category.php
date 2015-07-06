@@ -9,7 +9,7 @@ class Category extends Model
 
   protected $fillable = array('name');
 
-  public static $rules = array('name' => 'required|min:3');
+  public static $rules = array('name' => 'required|min:3|max:20');
 
   public function products() {
     return $this->hasMany('Product');
