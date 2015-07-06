@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $validator = Validator::make(Input::all(), Category::$rules);
 
         if (Category::where('name', '=', Input::get('name'))->first()) {
-            return Redirect::to('admin/product/category')
+            return Redirect::back()
                 -> withErrors('There already has ' . Input::get('name') . ' category.');            
         }
 
@@ -53,11 +53,11 @@ class CategoryController extends Controller
             $category->name = Input::get('name');
             $category->save();
 
-            return Redirect::to('admin/product/category')
+            return Redirect::back()
                 -> with('message', 'Category ' . $category->name . ' created.');
         }
 
-        return Redirect::to('admin/product/category')
+        return Redirect::back()
             -> withErrors($validator);
     }
 
@@ -108,12 +108,11 @@ class CategoryController extends Controller
             $category->name = Input::get('name');
             $category->save();
 
-            return Redirect::to('admin/product/category')
+            return Redirect::back()
                 -> with('message', 'Category ' . $category->name . ' updated.');
         }
 
-        return Redirect::to('admin/product/category')
-            -> with('message', 'Something went wrong, please try again.')
+        return Redirect::back()
             -> withErrors($validator)
             -> with('categories', Category::all());
     }
@@ -138,12 +137,12 @@ class CategoryController extends Controller
         // delete category
         if ($category) {
             $category->delete();
-            return Redirect::to('admin/product/category')
+            return Redirect::back()
                 -> with('message', 'Category ' . $category->name . ' deleted.');
         }
 
         // delete category error
-        return Redirect::to('admin/product/category')
+        return Redirect::back()
             -> with('message', 'Something went wrong, please try again.');
     }
 
