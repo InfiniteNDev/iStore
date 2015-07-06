@@ -43,6 +43,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make(Input::all(), Category::$rules);
 
+        // if has same name, error
         if (Category::where('name', '=', Input::get('name'))->first()) {
             return Redirect::back()
                 -> withErrors('There already has ' . Input::get('name') . ' category.');            
@@ -102,6 +103,12 @@ class CategoryController extends Controller
     public function update()
     {
          $validator = Validator::make(Input::all(), Category::$rules);
+        
+        // if has same name, error
+        if (Category::where('name', '=', Input::get('name'))->first()) {
+            return Redirect::back()
+                -> withErrors('There already has ' . Input::get('name') . ' category.');            
+        }
 
         if ($validator->passes()) {
             $category = Category::find(Input::get('id'));
