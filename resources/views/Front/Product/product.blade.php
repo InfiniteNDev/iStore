@@ -39,21 +39,33 @@
         {!! App\Libs\Availability::display($product->availability) !!}
       </p>
 
-      {{-- goto checkout --}}
-      {!! Form::open(array('url' => '', 'method' => 'get')) !!}
-        {!! Form::hidden('id', $product->id) !!}
-        {!! Form::submit('Buy', array(
-          'class' => 'btn btn-primary')
-        ) !!}
-      {!! Form::close() !!}
-      <br/>
+      <div class="form-inline">
+        {{-- quantity --}}
+        <div class="form-group">
+          {!! Form::text('quantity', '1' ,array(
+            'class' => 'form-control'
+          )) !!}
+        </div>
 
-      {{-- add to cart --}}
-      {!! Form::open(array('url' => '')) !!}
-        {!! Form::submit('Add to Cart', array(
-          'class' => 'btn btn-default')
-        ) !!}
-      {!! Form::close() !!}
+        {{-- goto checkout --}}
+        <div class="form-group">
+        {!! Form::open(array('url' => '', 'method' => 'get')) !!}
+          {!! Form::hidden('id', $product->id) !!}
+          {!! Form::submit('Buy', array(
+            'class' => 'btn btn-primary')
+          ) !!}
+        {!! Form::close() !!}
+        </div>
+
+        {{-- add to cart --}}
+        <div class="form-group">
+          {!! Form::open(array('url' => '')) !!}
+            {!! Form::submit('Add to Cart', array(
+              'class' => 'btn btn-default')
+            ) !!}
+          {!! Form::close() !!}
+        </div>
+      </div>
 
     </div>
     {{-- end product info  --}}
@@ -63,6 +75,11 @@
   <hr/>
   
   <div class="form-group">
+    <h3>Product Title</h3>
+    <p>
+      {!! $product->title !!}
+    </p>
+
     <h3>Product Category</h3>
     <p>
       {!! App\Models\Category::find($product->category_id)->name !!}
