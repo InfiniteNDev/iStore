@@ -176,7 +176,6 @@ class ProductController extends Controller
 
         return Redirect::back()
             -> withInput()
-            -> with('message', 'Something went wrong, please try again.')
             -> withErrors($validator);
     }
 

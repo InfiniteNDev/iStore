@@ -19,11 +19,11 @@ class Product extends Model
 
   public static $rules = array(
     'category_id' => 'required|integer',
-    'title' => 'required|min:1',
+    'title' => 'required|min:1|max:20',
     'description' => 'required|min:1',
     'price' => 'required|numeric',
-    'discount' => 'numeric',
-    'stock' => 'required|integer',
+    'discount' => 'numeric|min:0|max:1',
+    'stock' => 'required|integer|min:0',
     'availability' => 'integer',
     'image' => 'image|mimes:jpeg,jpg,bmp,png,gif'
   );
