@@ -15,14 +15,4 @@ class Category extends Model
     return $this->hasMany('Product');
   }
 
-  /**
-   * get category by id
-   * 
-   * @param  [integer] $id [category id]
-   * @return [category]     [category]
-   */
-  public function getIndex($id) {
-    Category::find($id);
-  }
-
 }

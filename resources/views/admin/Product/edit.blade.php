@@ -44,7 +44,7 @@
 
       <div class="form-group">
         {!! Form::Label('category_id', 'Product Category', array('sr-only')) !!}
-        {!! Form::select('category_id', $categories, $product->category_id, array('class' => 'form-control')) !!}
+        {!! Form::select('category_id', App\Models\Category::lists('name', 'id'), $product->category_id, array('class' => 'form-control')) !!}
       </div>
 
       <div class="form-group">

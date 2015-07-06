@@ -19,7 +19,7 @@ class ProductTest extends TestCase
         $this -> visit('admin/product/products')
               -> seePageIs('admin/product/products')
               -> press('Update')
-              -> press('Delete')
+              // -> press('Delete')
               -> press('Edit');
     }
 }

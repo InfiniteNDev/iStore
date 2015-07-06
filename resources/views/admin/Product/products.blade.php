@@ -55,7 +55,7 @@
                 {!! $product->title !!}
               </td>
               <td>
-                {!! $categories[$product->category_id] !!}
+                {!! App\Models\Category::find($product->category_id)->name !!}
               </td>
               <td>
                 {!! $product->price !!}

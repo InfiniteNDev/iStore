@@ -65,7 +65,7 @@
   <div class="form-group">
     <h3>Product Category</h3>
     <p>
-      {!! $categories[$product->category_id] !!}
+      {!! App\Models\Category::find($product->category_id)->name !!}
     </p>
 
     <h3>Product Description</h3>

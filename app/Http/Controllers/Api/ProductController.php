@@ -31,21 +31,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // get category
-        $categories = array();
-        foreach (Category::all() as $category) {
-            $categories[$category->id] = $category->name;
-        }
-
         // show view
         if (Request::is('admin*')) {
             return view('admin/product/products')
-                -> with('products', Product::paginate(9))
-                -> with('categories', $categories);
+                -> with('products', Product::paginate(9));
         }
         return view('front/product/products')
-            -> with('products', Product::paginate(9))
-            -> with('categories', $categories);
+            -> with('products', Product::paginate(9));
     }
 
     /**
@@ -55,14 +47,8 @@ class ProductController extends Controller
      */
     public function showNew()
     {
-        // get category
-        $categories = array();
-        foreach (Category::all() as $category) {
-            $categories[$category->id] = $category->name;
-        }
         // show view
-        return view('admin/product/new')
-            -> with('categories', $categories);
+        return view('admin/product/new');
     }
 
     /**
@@ -130,15 +116,9 @@ class ProductController extends Controller
      */
     public function show()
     {
-        // get category
-        $categories = array();
-        foreach (Category::all() as $category) {
-            $categories[$category->id] = $category->name;
-        }
         // show view
         return view('front/product/product')
-            -> with('product', Product::find(Input::get('id')))
-            -> with('categories', $categories);
+            -> with('product', Product::find(Input::get('id')));
     }
 
     /**
@@ -149,15 +129,9 @@ class ProductController extends Controller
      */
     public function edit()
     {
-         // get category
-        $categories = array();
-        foreach (Category::all() as $category) {
-            $categories[$category->id] = $category->name;
-        }
         // show view
         return view('admin/product/edit')
-            -> with('product', Product::find(Input::get('id')))
-            -> with('categories', $categories);
+            -> with('product', Product::find(Input::get('id')));
     }
 
     /**
@@ -168,12 +142,6 @@ class ProductController extends Controller
      */
     public function update()
     {
-        // get category
-        $categories = array();
-        foreach (Category::all() as $category) {
-            $categories[$category->id] = $category->name;
-        }
-
         $validator = Validator::make(Input::all(), Product::$rules);
 
         if ($validator->passes()) {
