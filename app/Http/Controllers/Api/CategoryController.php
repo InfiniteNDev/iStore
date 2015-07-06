@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Models\Category;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -128,12 +129,20 @@ class CategoryController extends Controller
     {
         $category = Category::find(Input::get('id'));
 
+        // if category has products
+        if (Product::where('category_id', '=', Input::get('id'))->first()) {
+            return Redirect::back()
+                -> withErrors('You should delete these category\'s products firstly.');
+        }
+
+        // delete category
         if ($category) {
             $category->delete();
             return Redirect::to('admin/product/category')
                 -> with('message', 'Category ' . $category->name . ' deleted.');
         }
 
+        // delete category error
         return Redirect::to('admin/product/category')
             -> with('message', 'Something went wrong, please try again.');
     }
