@@ -21,7 +21,7 @@ class Product extends Model
     'category_id' => 'required|integer',
     'title' => 'required|min:1|max:20',
     'description' => 'required|min:1',
-    'price' => 'required|numeric',
+    'price' => 'required|numeric|min:0',
     'discount' => 'numeric|min:0|max:1',
     'stock' => 'required|integer|min:0',
     'availability' => 'integer',
