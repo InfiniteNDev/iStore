@@ -11,59 +11,56 @@
 |
 */
 
-/*--------------------*   
- *                    *
- *      FRONTEND      *
- *                    *
- *--------------------*/
+/*================================
+=            frontend            =
+================================*/
+/*==========  login  ==========*/
 Route::group(
   [
     'namespace' => 'Front'
   ], function () {
-    /*--------------------*   
-     *        login       *
-     *--------------------*/
-    
-    // show admin login form
-    Route::get(
-      'login',
-      array(
-        'middleware' => 'notLogin',
-        'uses' => 'FrontLoginController@showLogin'
-      )
-    );
-    
-    // admin login action
-    Route::post(
-      'login',
-      array(
-        'middleware' => 'notLogin',
-        'uses' => 'FrontLoginController@doLogin'
-      )
-    );
-    
-    // admin logout action
-    Route::get(
-      'logout',
-      array(
-        'uses' => 'FrontLoginController@doLogout'
-      )
-    );
+  // show admin login form
+  Route::get(
+    'login',
+    array(
+      'middleware' => 'notLogin',
+      'uses' => 'FrontLoginController@showLogin'
+    )
+  );
+  // admin login action
+  Route::post(
+    'login',
+    array(
+      'middleware' => 'notLogin',
+      'uses' => 'FrontLoginController@doLogin'
+    )
+  );
+  // admin logout action
+  Route::get(
+    'logout',
+    array(
+      'uses' => 'FrontLoginController@doLogout'
+    )
+  );
 });
+/*==========  end login  ==========*/
 
-// frontend's homepage
+
+/*==========  home page  ==========*/
 Route::get('/', function () {
   return view('Front/Index/index');
 });
+/*==========  end home page  ==========*/
 
-// about page
+
+/*==========  about page  ==========*/
 Route::get('about', function () {
   return view('Front/About/about');
 });
+/*==========  end about page  ==========*/
 
-/*---------------------*   
- *       product       *
- *---------------------*/
+
+/*==========  product page  ==========*/
 // products page: show all products
 Route::get(
   'product/products',
@@ -71,7 +68,6 @@ Route::get(
     'uses' => 'Api\ProductController@index'
   )
 );
-
 // product's detail page: show single product
 Route::get(
   'product/product',
@@ -79,6 +75,30 @@ Route::get(
     'uses' => 'Api\ProductController@show'
   )
 );
+// product's detail: buy or add to cart
+Route::post(
+  'product/buyorcart',
+  array(
+    'uses' => 'Api\ProductController@buyorcart'
+  )
+);
+/*==========  end product page  ==========*/
+
+
+/*============================
+=            cart            =
+============================*/
+// cart page: show cart
+Route::get('cart', function () {
+  return view('Front/cart');
+});
+// add cart item
+Route::post('cart/add', array(
+    'uses' => 'Front\CartController@create'
+  )
+);
+/*-----  End of cart  ------*/
+
 
 // articles page: show all articles
 Route::get('articles', function () {
@@ -91,28 +111,26 @@ Route::get('article', function () {
   return view('article');
 });
 
-// cart page: show cart
-Route::get('cart', function () {
-  return view('Front/cart');
-});
 
 // checkout page: show checkout
 Route::get('checkout', function () {
   return view('Front/checkout');
 });
 
+
 // my account page
 Route::get('account', function () {
     return view('Front/account');
 });
+/*-----  End of frontend  ------*/
 
 
 
-/*-------------------*   
- *                   *
- *      BACKEND      *
- *                   *
- *-------------------*/
+/*===============================
+=            backend            =
+===============================*/
+
+
 /*-------------------*   
  *       login       *
  *-------------------*/
@@ -287,3 +305,4 @@ Route::group(
       return view('Admin/users');
     });
 });
+/*-----  End of backend  ------*/

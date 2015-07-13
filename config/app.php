@@ -137,7 +137,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
 
 
         /*
@@ -149,6 +148,10 @@ return [
 
         // laravel generator
         Laracasts\Generators\GeneratorsServiceProvider::class,
+
+        // install later
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -199,7 +202,9 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+        // install later
         'Image'     => Intervention\Image\Facades\Image::class,
+        'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 

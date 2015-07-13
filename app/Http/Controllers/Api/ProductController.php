@@ -201,6 +201,10 @@ class ProductController extends Controller
             -> with('message', 'Something went wrong, please try again.');
     }
 
+    /**
+     * toggle availability
+     * @return products page
+     */
     public function toggleAvailability()
     {
         $product = Product::find(Input::get('id'));
@@ -215,5 +219,29 @@ class ProductController extends Controller
 
         return Redirect::to('admin/product/products')
             -> with('message', 'Something went wrong, please try again.');
+    }
+
+    /**
+     * redirect to other pages depending on action
+     * 
+     * @return other page
+     */
+    public function buyorcart()
+    {
+        // check if buy or add to cart
+        $if_buy = !empty(Input::get('buy'));
+        $if_cart = !empty(Input::get('cart'));
+        // if buy, buy
+        if ($if_buy)
+        {
+            return "buy";
+        }
+        // if cart, add to cart
+        if ($if_cart)
+        {
+            $CartController = app()->make('App\Http\Controllers\Front\CartController');
+            $arguments      = Input::all();
+            return app()->call([$CartController, 'create'], $arguments);
+        }
     }
 }
