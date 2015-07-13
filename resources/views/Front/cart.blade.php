@@ -51,7 +51,7 @@
               <p ng:model="item.price">@{{ item.price }}</p>
             </td>
             <td>
-              @{{ (item.options.discount>=0 && item.options.discount<1) ? item.options.discount : "No Discount" }}
+              @{{ (item.options.product.discount>=0 && item.options.product.discount<1) ? item.options.product.discount : "No Discount" }}
             </td>
             <td>
               <input type="number" ng:model="item.qty" ng-change="update(item)" class="form-control" required min="1" max="@{{ item.options.product.stock }}">
@@ -76,8 +76,7 @@
             Total Price: @{{ total() | currency }}
         
             <div class="btn-group pull-right">
-                {!! Form::reset("Reset", ['class' => 'btn btn-warning']) !!}
-                {!! Form::submit("Buy", ['class' => 'btn btn-success']) !!}
+                {!! Form::submit("Buy", ['class' => 'btn btn-primary']) !!}
             </div>
         
         {!! Form::close() !!}
