@@ -32,7 +32,7 @@
       <table class="table table-striped cart-container">
         <thead>
           <tr>
-            <th>Product Title</th>
+            <th>Product</th>
             <th>Price</th>
             <th>Discount</th>
             <th>Quantity</th>
@@ -42,7 +42,10 @@
         <tbody>
           <tr ng:repeat="item in cart.items">
             <td>
-              <p ng:model="item.name">@{{ item.name}}</p>
+              <a ng:model="item.name" href="product/product?id=@{{item.id}}">
+                <img src="@{{item.options.product.image.replace('public/', '')}}" height=50>
+                @{{ item.name }}
+              </a>
             </td>
             <td>
               <p ng:model="item.price">@{{ item.price }}</p>
@@ -51,7 +54,7 @@
               @{{ (item.options.discount>=0 && item.options.discount<1) ? item.options.discount : "No Discount" }}
             </td>
             <td>
-              <input type="number" ng:model="item.qty" ng-change="update(item)" class="form-control" required min="1" max="@{{ item.options.stock }}">
+              <input type="number" ng:model="item.qty" ng-change="update(item)" class="form-control" required min="1" max="@{{ item.options.product.stock }}">
             </td>
             <td>
               {!! Form::open(['method' => 'POST', 'url' => 'cart/remove', 'class' => 'form-horizontal']) !!}

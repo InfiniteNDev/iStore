@@ -39,7 +39,7 @@ class CartController extends Controller
         }
 
         // search cart, if already has this product, add one more to cart
-        $if_product_exist = Cart::search(array('id'=>'Cart' . $product->id));
+        $if_product_exist = Cart::search(array('id'=>$product->id));
         if ($if_product_exist) {
             $rowId = $if_product_exist[0];
             $oldQty = Cart::get($rowId)->qty;
@@ -52,14 +52,13 @@ class CartController extends Controller
         }
 
         Cart::add(array(
-            'id'         => 'Cart' . $product->id,
+            'id'         => $product->id,
             'name'       => $product->title,
             'qty'        => $quantity,
             'price'      => $product->price,
             'options'    => array(
-                'discount'   => $product->discount,
-                'stock'      => $product->stock
-                )
+                'product'   => $product
+            )
         ));
 
         return Redirect::to('cart')
