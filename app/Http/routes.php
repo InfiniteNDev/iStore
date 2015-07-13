@@ -100,6 +100,12 @@ Route::post('cart/add', array(
 /*-----  End of cart  ------*/
 
 
+// checkout page: show checkout
+Route::get('checkout', function () {
+  return view('Front/checkout');
+});
+
+
 // articles page: show all articles
 Route::get('articles', function () {
   return view('Front/articles');
@@ -109,12 +115,6 @@ Route::get('articles', function () {
 // fix: enter with id
 Route::get('article', function () {
   return view('article');
-});
-
-
-// checkout page: show checkout
-Route::get('checkout', function () {
-  return view('Front/checkout');
 });
 
 
@@ -129,17 +129,12 @@ Route::get('account', function () {
 /*===============================
 =            backend            =
 ===============================*/
-
-
-/*-------------------*   
- *       login       *
- *-------------------*/
+/*==========  login  ==========*/
 Route::group(
   [
     'namespace' => 'Admin',
     'prefix' => 'admin'
   ], function () {
-    
     // show admin login form
     Route::get(
       'login',
@@ -148,7 +143,6 @@ Route::group(
         'uses' => 'AdminLoginController@showLogin'
       )
     );
-    
     // admin login action
     Route::post(
       'login',
@@ -157,7 +151,6 @@ Route::group(
         'uses' => 'AdminLoginController@doLogin'
       )
     );
-    
     // admin logout action
     Route::get(
       'logout',
@@ -165,23 +158,23 @@ Route::group(
         'uses' => 'AdminLoginController@doLogout'
       )
     );
+});
+/*==========  end login  ==========*/
 
-  }
-);
 
 Route::group(
   [
     'middleware' => 'admin',
     'prefix' => 'admin'
   ], function () {
-    // admin homepage
+    /*==========  admin home page  ==========*/
     Route::get('/', function () {
       return view('Admin/index');
     });
+    /*==========  end admin home page  ==========*/
+    
 
-    /*---------------------*   
-     *       product       *
-     *---------------------*/
+    /*==========  product page  ==========*/
     // C
     // add product page
     Route::get(
@@ -197,7 +190,6 @@ Route::group(
         'uses' => 'Api\ProductController@create'
       )
     );
-
     // R
     // admin products page: show all products
     Route::get(
@@ -213,7 +205,6 @@ Route::group(
         'uses' => 'Api\ProductController@edit'
       )
     );
-
     // U
     // toggle availability
     Route::post(
@@ -229,7 +220,6 @@ Route::group(
         'uses' => 'Api\ProductController@update'
       )
     );
-
     // D
     // destroy specific product
     Route::post(
@@ -238,10 +228,10 @@ Route::group(
         'uses' => 'Api\ProductController@destroy'
       )
     );
+    /*==========  end product page  ==========*/
     
-    /*-----------------------------*   
-     *       product category      *
-     *-----------------------------*/
+
+    /*==========  category page  ==========*/
     // C 
     // create category
     Route::post(
@@ -250,7 +240,6 @@ Route::group(
         'uses' => 'Api\CategoryController@create'
       )
     );
-
     // R
     // category page: show categories
     Route::get(
@@ -259,7 +248,6 @@ Route::group(
         'uses' => 'Api\CategoryController@index'
       )
     );
-
     // U
     // update specific category
     Route::post(
@@ -268,7 +256,6 @@ Route::group(
         'uses' => 'Api\CategoryController@update'
       )
     );  
-
     // D
     // destroy specific category
     Route::post(
@@ -277,11 +264,14 @@ Route::group(
         'uses' => 'Api\CategoryController@destroy'
       )
     );
+    /*==========  end category  ==========*/
+    
 
     // admin articles page: show all articles, CRUD
     Route::get('articles', function () {
       return view('Admin/articles');
     });
+
 
     // admin single article page: show single article, CRUD
     // fix: with id
@@ -289,16 +279,19 @@ Route::group(
       return view('Admin/article');
     });
 
+
     // admin orders page: show all orders
     Route::get('orders', function () {
       return view('Admin/orders');
     });
+
 
     // admin single order page: show single order
     // fix: with id
     Route::get('order', function () {
       return view('Admin/order');
     });
+    
 
     // admin users page: show all users
     Route::get('users', function () {
