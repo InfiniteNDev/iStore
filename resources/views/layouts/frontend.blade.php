@@ -5,7 +5,7 @@
   <title>iStore</title>
   {!! HTML::style('assets/stylesheets/style.css') !!}
 </head>
-<body>
+<body ng-app="iStoreFront">
   
   
   {{-- header --}}

@@ -56,7 +56,10 @@ class CartController extends Controller
             'name'       => $product->title,
             'qty'        => $quantity,
             'price'      => $product->price,
-            'options'    => array('discount'   => $product->discount)
+            'options'    => array(
+                'discount'   => $product->discount,
+                'stock'      => $product->stock
+                )
         ));
 
         return Redirect::to('cart')
@@ -103,9 +106,15 @@ class CartController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $rowId = Input::get('rowid');
+        $update_success = Cart::update($rowId, array('qty' => Input::get('qty')));
+        if (!$update_success)
+        {
+            return Redirect::back()
+                -> withErrors("There is something wrong.");
+        }
     }
 
     /**
@@ -114,8 +123,19 @@ class CartController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $rowId = Input::get('rowId');
+        
+        $remove_success = !Cart::remove($rowId);
+
+        if ($remove_success) 
+        {
+            return Redirect::back()
+                -> with('message', 'Remove item successfully.');
+        }
+
+        return Redirect::back()
+            -> withErrors("There is something wrong.");
     }
 }

@@ -1,17 +1,45 @@
 @import '../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 
-
-// frontend
-// products
-.front-products-item {
-  padding: 20px;
-  border: 1px solid #dddddd;
-  margin: 20px;
-}
-
 .form-group {
   label {
     line-height:    34px;
     margin-bottom:  0;
   }
 }
+
+/*=============================
+=            front            =
+=============================*/
+/*==========  product  ==========*/
+.front-products-item {
+  padding: 20px;
+  border: 1px solid #dddddd;
+  margin: 20px;
+}
+/*==========  end product  ==========*/
+
+/*==========  cart  ==========*/
+.cart-container {
+  margin-bottom:    100px;
+}
+
+.cart-info {
+  position:         fixed;
+  bottom:           0;
+  left:             0;
+  width:            100%;
+  background-color: #dddddd;
+  padding-top:      10px;
+  padding-bottom:   10px;
+}
+/*==========  end cart  ==========*/
+
+
+
+
+
+
+
+
+
+/*-----  End of front  ------*/

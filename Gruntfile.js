@@ -67,7 +67,8 @@ module.exports = function(grunt) {
             //watched files
             './resources/assets/javascripts/frontend.js'
             ],   
-          tasks: ['concat:js_frontend','uglify:frontend'],     //tasks to run
+          // tasks: ['concat:js_frontend','uglify:frontend'],     //tasks to run
+          tasks: ['concat:js_frontend'],     //tasks to run
           options: {
             livereload: true                        //reloads the browser
           }
@@ -77,7 +78,8 @@ module.exports = function(grunt) {
             //watched files
             './resources/assets/javascripts/backend.js'
           ],   
-          tasks: ['concat:js_backend','uglify:backend'],     //tasks to run
+          // tasks: ['concat:js_backend','uglify:backend'],     //tasks to run
+          tasks: ['concat:js_backend'],     //tasks to run
           options: {
             livereload: true                        //reloads the browser
           }

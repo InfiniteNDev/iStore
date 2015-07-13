@@ -1,55 +1,86 @@
 @extends('Layouts.frontend')
 
 @section('content')
+  <div ng:controller="cartController">
     {{-- {!! dd(Cart::content()); !!} --}}
-  <div class="container">
+    <div class="container">
+      {{-- message --}}
+      @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p>{{ Session::get('message') }}</p>
+          </ul>
+        </div>
+      @endif
+      {{-- end message --}}
 
-    {{-- message --}}
-    @if (Session::has('message'))
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p>{{ Session::get('message') }}</p>
-        </ul>
-      </div>
-    @endif
-    {{-- end message --}}
+      {{-- error --}}
+      @if ($errors->has())
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p>The following errors are occurred:</p>
+          <ul class="">
+            @foreach ($errors->all() as $error)
+              <li class="">{!! $error !!}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
+      {{-- end error --}}
 
-    {{-- show products --}}
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Product Title</th>
-          <th>Price</th>
-          <th>Discount</th>
-          <th>Quantity</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (Cart::content() as $cart)
-          <tr class="">
+      {{-- show cart items --}}
+      <table class="table table-striped cart-container">
+        <thead>
+          <tr>
+            <th>Product Title</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Quantity</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng:repeat="item in cart.items">
             <td>
-              {!! $cart->name !!}
+              <p ng:model="item.name">@{{ item.name}}</p>
             </td>
             <td>
-              {!! $cart->price !!}
+              <p ng:model="item.price">@{{ item.price }}</p>
             </td>
             <td>
-              @if ($cart->options->has('discount') && $cart->options->discount!= 1 )
-                {!! $cart->options->discount !!}
-              @else
-                No Discount
-              @endif
+              @{{ (item.options.discount>=0 && item.options.discount<1) ? item.options.discount : "No Discount" }}
             </td>
             <td>
-              {!! $cart->qty !!}
+              <input type="number" ng:model="item.qty" ng-change="update(item)" class="form-control" required min="1" max="@{{ item.options.stock }}">
             </td>
             <td>
-              delete
+              {!! Form::open(['method' => 'POST', 'url' => 'cart/remove', 'class' => 'form-horizontal']) !!}
+                {!! Form::hidden('rowId', "@{{ item.rowid }}") !!}
+                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+              {!! Form::close() !!}
             </td>
           </tr>
-        @endforeach
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+      {{-- end show cart items --}}
+    </div>
+
+    {{-- show info: total price... --}}
+    <div class="cart-info">
+      <div class="container">
+        {!! Form::open(['method' => 'POST', '' => '', 'class' => 'form-horizontal']) !!}
+        
+            Total Price: @{{ total() | currency }}
+        
+            <div class="btn-group pull-right">
+                {!! Form::reset("Reset", ['class' => 'btn btn-warning']) !!}
+                {!! Form::submit("Buy", ['class' => 'btn btn-success']) !!}
+            </div>
+        
+        {!! Form::close() !!}
+      </div>
+    </div>
+    {{-- end show info: total price... --}}
   </div>
+
 @endsection

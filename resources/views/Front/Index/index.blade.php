@@ -5,7 +5,7 @@
   @include('Front.Index.Partials.carousel')
   {{-- end carousel --}}
   
-  <div class="container">
+  <div class="container" >
     {{-- about --}}
     @include('Front.Index.Partials.about')
     {{-- end about --}}

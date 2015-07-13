@@ -41271,3 +41271,42 @@ var minlengthDirective = function() {
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');;
+var iStoreFront = angular.module('iStoreFront', []);
+
+/*=================================
+=            cart form            =
+=================================*/
+iStoreFront.controller('cartController', function ($scope, $http) {
+
+  // get all cart items
+  $scope.cart = {
+    items:[]
+  };
+  $http.get("cart/all").success(function(items) {
+    $scope.cart.items = items;
+  });
+
+  // get total price
+  $scope.total = function() {
+    var total = 0;
+    angular.forEach($scope.cart.items, function(item) {
+      total += item.qty * item.price;
+    })
+
+    return total;
+  }
+
+  $scope.update = function(item) {
+    var req = {
+     method: 'POST',
+     url: 'cart/update',
+     data: item
+   }
+   $http(req);
+ }
+
+});
+
+
+/*-----  End of cart form  ------*/
+

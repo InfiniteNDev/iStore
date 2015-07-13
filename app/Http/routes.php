@@ -92,9 +92,23 @@ Route::post(
 Route::get('cart', function () {
   return view('Front/cart');
 });
+// get all cart items
+Route::get('cart/all', function () {
+  return Cart::content();
+});
 // add cart item
 Route::post('cart/add', array(
     'uses' => 'Front\CartController@create'
+  )
+);
+// remove cart item
+Route::post('cart/remove', array(
+    'uses' => 'Front\CartController@destroy'
+  )
+);
+// update cart item
+Route::post('cart/update', array(
+    'uses' => 'Front\CartController@update'
   )
 );
 /*-----  End of cart  ------*/
@@ -291,7 +305,7 @@ Route::group(
     Route::get('order', function () {
       return view('Admin/order');
     });
-    
+
 
     // admin users page: show all users
     Route::get('users', function () {
