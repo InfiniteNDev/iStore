@@ -18,7 +18,7 @@ iStoreFront.controller('cartController', function ($scope, $http) {
   $scope.total = function() {
     var total = 0;
     angular.forEach($scope.cart.items, function(item) {
-      total += item.qty * item.price;
+      total += item.qty * item.price * item.options.product.discount;
     })
 
     return total;

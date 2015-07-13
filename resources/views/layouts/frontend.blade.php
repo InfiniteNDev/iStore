@@ -5,7 +5,7 @@
   <title>iStore</title>
   {!! HTML::style('assets/stylesheets/style.css') !!}
 </head>
-<body ng-app="iStoreFront">
+<body ng-app="iStoreFront" ng-cloak>
   
   
   {{-- header --}}

@@ -33,6 +33,7 @@
         <thead>
           <tr>
             <th>Product</th>
+            <th>Original Price</th>
             <th>Price</th>
             <th>Discount</th>
             <th>Quantity</th>
@@ -43,15 +44,20 @@
           <tr ng:repeat="item in cart.items">
             <td>
               <a ng:model="item.name" href="product/product?id=@{{item.id}}">
-                <img src="@{{item.options.product.image.replace('public/', '')}}" height=50>
-                @{{ item.name }}
+                <img ng-src="@{{item.options.product.image.replace('public/', '')}}" height=50>
+                <span ng-bind="item.name"></span>
               </a>
             </td>
             <td>
-              <p ng:model="item.price">@{{ item.price }}</p>
+              <span ng-class="(item.options.product.discount>=0 && item.options.product.discount<1) ? 'original-price' : ''" ng:model="item.price" ng-bind="item.price"></span>
             </td>
             <td>
-              @{{ (item.options.product.discount>=0 && item.options.product.discount<1) ? item.options.product.discount : "No Discount" }}
+                <span ng-if="item.options.product.discount>=0 && item.options.product.discount<1" ng-bind="item.options.product.price * item.options.product.discount"></span>
+                <span ng-if="!(item.options.product.discount>=0 && item.options.product.discount<1)" ng-bind="item.options.product.price"></span>
+            </td>
+            <td>
+                <span ng-if="item.options.product.discount>=0 && item.options.product.discount<1" ng-bind="item.options.product.discount"></span>
+                <span ng-if="!(item.options.product.discount>=0 && item.options.product.discount<1)" ng-bind="'No Discount'"></span>
             </td>
             <td>
               <input type="number" ng:model="item.qty" ng-change="update(item)" class="form-control" required min="1" max="@{{ item.options.product.stock }}">
